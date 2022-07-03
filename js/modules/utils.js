@@ -28,6 +28,8 @@ function resizeCanvas(globals, can) {
     	redraw = true,
       scale = 1,
       makeSmooth = false
+
+    console.log("Setting STRETCH_TO_SCREEN is false")
     // TODO: Magic numbers?
     // return {
     //   width: 160 * globals.SCALE,
@@ -40,13 +42,14 @@ function resizeCanvas(globals, can) {
   }  
   // the screen is wider than 4:3
   else if (window.innerWidth * (3/4) > window.innerHeight) {  
-
-      width = can.height * aspect_ratio
+    
       height = window.innerHeight
+      width = height * aspect_ratio
       redraw = true 
       scale = height / 120,
       makeSmooth = true
-
+      console.log("Setting to: window.innerHeight")
+    
    // return {
    //    width: can.height * aspect_ratio,
    //    height: window.innerHeight,
@@ -76,7 +79,7 @@ function resizeCanvas(globals, can) {
       redraw = true
       scale = width / 160
       makeSmooth = true
-
+      console.log("Setting to: default")
   }
   // redraw = true;
   // setNearestNeighbor();

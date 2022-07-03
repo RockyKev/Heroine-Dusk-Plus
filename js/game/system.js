@@ -2,6 +2,7 @@
  Various config options to help deployment to different platforms.
  */
 
+// TODO: figure out how to make this unsuck
 var can;     // canvas
 var ctx;     // context
 
@@ -11,7 +12,7 @@ if (can.getContext) {
 }
 
 
-// TODO: Call this a global config
+// TODO: Call this a global config or change to strings
 var STATE_EXPLORE = 0;
 var STATE_COMBAT = 1;
 var STATE_INFO = 2;
@@ -74,7 +75,8 @@ window.GLOBAL = {
   OPTIONS: {
     animation: true,
     music: true,
-    sfx: true 
+    sfx: true,
+    minimap: false
   },
   STATE: {
     redraw: false,

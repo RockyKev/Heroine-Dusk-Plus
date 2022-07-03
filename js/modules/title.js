@@ -5,6 +5,7 @@
  */
 import { bitfont_render } from "./bitfont.js"
 import { isWithin } from "./utils.js"
+import { setCookie } from "../game/saveload.js";
 
 
 var TITLE_MENU_MAIN = 0;
@@ -30,16 +31,16 @@ function title_set_menu(id) {
     title.menu[1] = "Options";
   }
   else if (id == TITLE_MENU_OPTIONS) {
-    if (OPTIONS.animation) title.menu[0] = "Animations are on";
+    if (GLOBAL.OPTIONS.animation) title.menu[0] = "Animations are on";
     else title.menu[0] = "Animations are off";
 
-    if (OPTIONS.music) title.menu[1] = "Music is on";
+    if (GLOBAL.OPTIONS.music) title.menu[1] = "Music is on";
     else title.menu[1] = "Music is off";
 
-    if (OPTIONS.sfx) title.menu[2] = "Sounds are on";
+    if (GLOBAL.OPTIONS.sfx) title.menu[2] = "Sounds are on";
     else title.menu[2] = "Sounds are off";
 
-    if (OPTIONS.minimap) title.menu[3] = "Minimap is on";
+    if (GLOBAL.OPTIONS.minimap) title.menu[3] = "Minimap is on";
     else title.menu[3] = "Minimap is off";
     
     title.menu[4] = "Back";
@@ -59,6 +60,8 @@ function title_onload() {
   title.img_loaded = true;
 }
 
+// TODO: this is overloaded. 
+// This has start game AND options. 
 export function title_logic() {
   title.menu_confirm = false;
 
@@ -105,25 +108,25 @@ export function title_logic() {
     }
     else if (title.menu_id == TITLE_MENU_OPTIONS) {
       if (title.menu_selector == 0) {
-        OPTIONS.animation = !OPTIONS.animation;
+        GLOBAL.OPTIONS.animation = !GLOBAL.OPTIONS.animation;
         title_set_menu(TITLE_MENU_OPTIONS);
       }
       else if (title.menu_selector == 1) {
-        OPTIONS.music = !OPTIONS.music;        
+        GLOBAL.OPTIONS.music = !GLOBAL.OPTIONS.music;        
         title_set_menu(TITLE_MENU_OPTIONS);
       }
       else if (title.menu_selector == 2) {
-        OPTIONS.sfx = !OPTIONS.sfx;
+        GLOBAL.OPTIONS.sfx = !GLOBAL.OPTIONS.sfx;
         title_set_menu(TITLE_MENU_OPTIONS);
       }
       else if (title.menu_selector == 3) {
-         OPTIONS.minimap = !OPTIONS.minimap;
+         GLOBAL.OPTIONS.minimap = !GLOBAL.OPTIONS.minimap;
          title_set_menu(TITLE_MENU_OPTIONS);
       }
       else if (title.menu_selector == 4) {
         title_set_menu(TITLE_MENU_MAIN);
       }
-      var json_save = JSON.stringify(OPTIONS);
+      var json_save = JSON.stringify(GLOBAL.OPTIONS);
       setCookie("options",json_save,90);
     }
   }
