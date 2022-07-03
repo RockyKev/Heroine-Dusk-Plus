@@ -15,7 +15,7 @@ treasure.img_loaded = false;
 treasure.gold_pos = new Array();
 
 /*** Initialize **********************/
-function treasure_init() {
+export function treasure_init() {
 
   treasure.img.src = "images/treasure/treasure.png";
   treasure.img.onload = function() {treasure_img_onload();};  

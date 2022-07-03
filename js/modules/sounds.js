@@ -22,7 +22,7 @@ var SFX_UNLOCK = 13;
 var sounds = new Object();
 sounds.fx = new Array();
 
-function sounds_init() {
+export function sounds_init() {
   sounds.fx[SFX_ATTACK] = new Audio("sounds/attack.wav");
   sounds.fx[SFX_MISS] = new Audio("sounds/miss.wav");
   sounds.fx[SFX_CRITICAL] = new Audio("sounds/critical.wav");

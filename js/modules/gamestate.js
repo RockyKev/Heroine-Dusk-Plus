@@ -10,8 +10,10 @@
 // var STATE_TITLE = 4; 
  
 // var gamestate = STATE_TITLE;
+import { title_logic } from "./title.js"
 
-function gamestate_logic() {
+
+export function gamestate_logic() {
 
   switch(GLOBALS.STATE.gamestate) {
     case STATE_EXPLORE:

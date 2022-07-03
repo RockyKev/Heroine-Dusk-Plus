@@ -42,21 +42,21 @@ function title_set_menu(id) {
     title.menu[4] = "Back";
   }
 
-  redraw = true;
+  GLOBALS.STATE.redraw = true;
 }
 
 export function title_init() {
   title.img.src = "images/backgrounds/title.png";
   title.img.onload = function() {title_onload();};
   title_set_menu(TITLE_MENU_MAIN);
-  redraw = true;
+  GLOBALS.STATE.redraw = true;
 }
 
 function title_onload() {
   title.img_loaded = true;
 }
 
-function title_logic() {
+export function title_logic() {
   title.menu_confirm = false;
 
   // move past title screen by clicking or pressing the action button
@@ -67,7 +67,7 @@ function title_logic() {
         title.menu_selector = i;
         input_lock.mouse = true;
         title.menu_confirm = true;
-        redraw = true;
+        GLOBALS.STATE.redraw = true;
       }
     }
   }
@@ -79,14 +79,14 @@ function title_logic() {
     input_lock.up = true;
     if (title.menu_selector > 0) {
       title.menu_selector--;
-      redraw = true;
+      GLOBALS.STATE.redraw = true;
     }
   }
   else if (pressing.down && !input_lock.down) {
     input_lock.down = true;
     if (title.menu_selector < title.menu.length-1) {
       title.menu_selector++;
-      redraw = true;
+      GLOBALS.STATE.redraw = true;
     }
   }
 
@@ -129,7 +129,7 @@ function title_logic() {
 function title_render() {
 
   if (!bitfont.loaded || !title.img_loaded) {
-    redraw = true;
+    GLOBALS.STATE.redraw = true;
     return;
   }
 
@@ -155,11 +155,11 @@ function title_start() {
   shop_set(8);
   dialog.option[2].msg1 = "Wake up";
   mazemap_set_music(atlas.maps[mazemap.current_id].music);
-  redraw = true;
+  GLOBALS.STATE.redraw = true;
 }
 
 function title_continue() {
   mazemap_set_music(atlas.maps[mazemap.current_id].music);
   gamestate = STATE_EXPLORE;
-  redraw = true;
+  GLOBALS.STATE.redraw = true;
 }

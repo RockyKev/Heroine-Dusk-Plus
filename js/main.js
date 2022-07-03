@@ -1,5 +1,8 @@
 
 import { handleKeyDown, handleKeyUp, handleMouseDown, handleMouseUp, handleTouchStart, handleTouchEnd } from "./game/input.js"
+import { gamestate_logic } from "./modules/gamestate.js"
+
+import { enemy_init } from "./game/enemy.js"
 import { getCookie, setCookie } from "./game/saveload.js"
 import { bitfont_init } from "./modules/bitfont.js"
 import { tileset_init } from "./modules/tileset.js"
@@ -12,10 +15,14 @@ import { combat_init } from "./modules/combat.js"
 import { dialog_init } from "./modules/dialog.js"
 import { boss_init } from "./modules/boss.js"
 import { title_init } from "./modules/title.js"
+import { sounds_init } from "./modules/sounds.js"
+import { treasure_init } from "./modules/treasure.js"
+
+
 import { resizeCanvas } from "./modules/utils.js"
 
 
-import { enemy_init } from "./game/enemy.js"
+
 
 // html elements
 var can;     // canvas
@@ -25,12 +32,12 @@ var FPS = 60;
 // this style of game doesn't update visually often
 // set this flag anytime the render function should update the view
 // var redraw = false;
-// var init_complete = false;
+// var GLOBALS.STATE.init_complete = false;
 
 //---- Main Loop --------------------------------------------------
 
 setInterval(function() {
-  if (!init_complete) return;
+  if (!GLOBALS.STATE.init_complete) return;
   logic();
   render();
 }, 1000/FPS);
@@ -114,7 +121,7 @@ function init() {
   sounds_init();
   treasure_init();
 
-  init_complete = true;
+  GLOBALS.STATE.init_complete = true;
 }
 
 //---- Run Game -----------------------------------------------
