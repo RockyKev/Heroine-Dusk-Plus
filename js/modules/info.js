@@ -30,7 +30,7 @@ info.power_result = "";
 
 // This seems really wrong
 /*** Initialize **********************/
-function info_init() {
+export function info_init() {
 
   info.avatar_img.src = "images/interface/heroine.png";
   info.avatar_img.onload = function() {info_avatar_onload();};
@@ -75,7 +75,7 @@ function info_logic() {
 
   // check key to info screen
   if (pressing.action && !input_lock.action && action.select_pos == BUTTON_POS_INFO) {
-    gamestate = STATE_EXPLORE;
+    GLOBALS.STATE.gamestate = STATE_EXPLORE;
 	input_lock.action = true;	
 	redraw = true;
     sounds_play(SFX_CLICK);
@@ -83,7 +83,7 @@ function info_logic() {
 
   // check click to close info screen
   if (pressing.mouse && !input_lock.mouse && isWithin(mouse_pos, BUTTON_POS_INFO)) {
-    gamestate = STATE_EXPLORE;
+    GLOBALS.STATE.gamestate = STATE_EXPLORE;
 	input_lock.mouse = true;
 	redraw = true;  
 	sounds_play(SFX_CLICK);
@@ -207,8 +207,8 @@ function info_render_button() {
   var button_x;
   
   // show button up on explore, down on info, and hidden any other state
-  if (gamestate == STATE_EXPLORE) button_x = 0;
-  else if (gamestate == STATE_INFO) button_x = BUTTON_SIZE;
+  if (GLOBALS.STATE.gamestate == STATE_EXPLORE) button_x = 0;
+  else if (GLOBALS.STATE.gamestate == STATE_INFO) button_x = BUTTON_SIZE;
   else return;
   
   ctx.drawImage(

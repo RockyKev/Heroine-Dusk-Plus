@@ -28,7 +28,7 @@ minimap.cursor_loaded = false;
 
 
 
-function minimap_init() {
+export function minimap_init() {
 
   minimap.img.src = "images/interface/minimap.png";
   minimap.img.onload = function() {minimap_img_onload();};

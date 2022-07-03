@@ -3,6 +3,13 @@
  */
 
 // TODO: Call this a global config
+ 
+var STATE_EXPLORE = 0;
+var STATE_COMBAT = 1;
+var STATE_INFO = 2;
+var STATE_DIALOG = 3;
+var STATE_TITLE = 4; 
+ 
 
 window.GLOBALS = {
   VIEW_WIDTH: 160,
@@ -17,9 +24,28 @@ window.GLOBALS = {
   },
   STATE: {
     redraw: false,
-    init_complete: false  
-  }
+    init_complete: false,
+    gamestate: STATE_TITLE,
+  },
+  AVATAR: {},
+  EXPLORE: {
+    encounter_chance: 0,
+    encounter_increment: .05,
+    encounter_max: .30,
+    message: "",
+    treasure_id: 0,    
+    gold_value: 0
+  },
 }
+
+// explore.encounter_chance = 0;
+// explore.encounter_increment = .05;
+// explore.encounter_max = .30;
+// explore.message = "";
+
+// found items for rendering
+// explore.treasure_id = 0;
+// explore.gold_value = 0;
 
 // var VIEW_WIDTH = 160;
 // var VIEW_HEIGHT = 120;

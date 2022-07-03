@@ -4,7 +4,12 @@ import { getCookie, setCookie } from "./game/saveload.js"
 import { bitfont_init } from "./modules/bitfont.js"
 import { tileset_init } from "./modules/tileset.js"
 import { mazemap_init } from "./modules/mazemap.js"
+import { minimap_init } from "./modules/minimap.js"
+import { avatar_init } from "./modules/avatar.js"
+import { info_init } from "./modules/info.js"
+import { action_init } from "./modules/action.js"
 import { resizeCanvas } from "./modules/utils.js"
+import { enemy_init } from "./game/enemy.js"
 
 // html elements
 var can;     // canvas

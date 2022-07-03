@@ -49,7 +49,7 @@ enemy.render_offset = {x:0, y:0};
 
 function enemy_init() {
   // TODO: Object.keys(myObj).length;
-  for (i=0; i<ENEMY_COUNT; i++) {
+  for (let i=0; i<ENEMY_COUNT; i++) {
     enemy.img[i] = new Image();
   }
 
@@ -144,4 +144,4 @@ function enemy_render(enemy_id) {
   boss_boneshield_render();
 }
 
-export { ENEMY };
+export { ENEMY, enemy_init };

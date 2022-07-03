@@ -29,7 +29,7 @@ action.select_pos = BUTTON_POS_INFO;
 
 
 /**** Initialize ***************/
-function action_init() {
+export function action_init() {
 
   action.button_img.src = "images/interface/action_buttons.png";
   action.button_img.onload = function() {action_button_onload();};

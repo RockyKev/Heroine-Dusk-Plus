@@ -9,7 +9,12 @@ While Atlas is a static collection, MazeMap can be altered by events.
 */
 
 import { atlas } from "../game/atlas.js"
+import { mapscript_exec } from "../game/mapscript.js";
 // import { mazemap_set_music } from "./music.js";
+
+// TODO: This should be split into content -> system -> result.
+// right now it's content -> system.
+
 
 var mazemap = new Object();
 mazemap.current_id = 0;
@@ -147,7 +152,7 @@ function mazemap_set_tile(pos_x, pos_y, tile_id) {
   }
 }
 
-function mazemap_set(map_id) {
+export function mazemap_set(map_id) {
   mazemap.tiles = atlas.maps[map_id].tiles;
   mazemap.width = atlas.maps[map_id].width;
   mazemap.height = atlas.maps[map_id].height;
@@ -156,12 +161,12 @@ function mazemap_set(map_id) {
   mapscript_exec(map_id);
 
   // reset encounter chance when moving to a new map
-  explore.encounter_chance = 0;
+  GLOBALS.EXPLORE.encounter_chance = 0;
   
   // for save game info
-  avatar.map_id = map_id;
+  GLOBALS.AVATAR.map_id = map_id;
 
-  if (gamestate != STATE_TITLE) {
+  if (GLOBALS.STATE.gamestate != STATE_TITLE) {
     mazemap_set_music(atlas.maps[map_id].music);
   }
 
@@ -215,11 +220,11 @@ function mazemap_set_music(song_filename) {
 function mazemap_check_exit() {
   for (var i=0; i<atlas.maps[mazemap.current_id].exits.length; i++) {
 
-    if ((avatar.x == atlas.maps[mazemap.current_id].exits[i].exit_x) &&
-        (avatar.y == atlas.maps[mazemap.current_id].exits[i].exit_y)) {
+    if ((GLOBALS.avatar.x == atlas.maps[mazemap.current_id].exits[i].exit_x) &&
+        (GLOBALS.avatar.y == atlas.maps[mazemap.current_id].exits[i].exit_y)) {
         
-      avatar.x = atlas.maps[mazemap.current_id].exits[i].dest_x;
-      avatar.y = atlas.maps[mazemap.current_id].exits[i].dest_y;
+      GLOBALS.avatar.x = atlas.maps[mazemap.current_id].exits[i].dest_x;
+      GLOBALS.avatar.y = atlas.maps[mazemap.current_id].exits[i].dest_y;
       mazemap_set(atlas.maps[mazemap.current_id].exits[i].dest_map);
 
       return true;
@@ -231,14 +236,14 @@ function mazemap_check_exit() {
 function mazemap_check_shop() {
   for (var i=0; i<atlas.maps[mazemap.current_id].shops.length; i++) {
 
-    if ((avatar.x == atlas.maps[mazemap.current_id].shops[i].exit_x) &&
-        (avatar.y == atlas.maps[mazemap.current_id].shops[i].exit_y)) {
+    if ((GLOBALS.avatar.x == atlas.maps[mazemap.current_id].shops[i].exit_x) &&
+        (GLOBALS.avatar.y == atlas.maps[mazemap.current_id].shops[i].exit_y)) {
     
       shop_set(atlas.maps[mazemap.current_id].shops[i].shop_id);
 
       // put avatar back outside for save purposes
-      avatar.x = atlas.maps[mazemap.current_id].shops[i].dest_x;
-      avatar.y = atlas.maps[mazemap.current_id].shops[i].dest_y;
+      GLOBALS.avatar.x = atlas.maps[mazemap.current_id].shops[i].dest_x;
+      GLOBALS.avatar.y = atlas.maps[mazemap.current_id].shops[i].dest_y;
 
       return true;
     }  

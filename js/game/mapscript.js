@@ -2,6 +2,7 @@
  Scripting for various maps
  */
 
+// import { atlas } 
 
 var mapscript = new Object();
 
@@ -26,7 +27,7 @@ mapscript.locked_doors = [
 
 // TODO: Change this to be more dynamic.
 // This stuff is nasty
-function mapscript_exec(map_id) {
+export function mapscript_exec(map_id) {
 
   var result = false;
   switch (map_id) {
@@ -90,15 +91,15 @@ function mapscript_exec(map_id) {
 
 // general script types
 function mapscript_message(x, y, status, message) {
-  if (avatar.x == x && avatar.y == y) {
+  if (GLOBALS.AVATAR.x == x && GLOBALS.AVATAR.y == y) {
 
     // if the player has already read this message, skip it
-    if (avatar.campaign.indexOf(status) > -1) {
+    if (GLOBALS.AVATAR.campaign.indexOf(status) > -1) {
       return false;
     }
 
     explore.message = message;
-    avatar.campaign.push(status);
+    GLOBALS.AVATAR.campaign.push(status);
     return true;
 
   }
@@ -109,9 +110,9 @@ function mapscript_message(x, y, status, message) {
 function mapscript_haybale(x, y) {
 
   // don't rest if just starting the game
-  if (!avatar.moved) return false;
+  if (!GLOBALS.AVATAR.moved) return false;
 
-  if (avatar.x == x && avatar.y == y) { 
+  if (GLOBALS.AVATAR.x == x && GLOBALS.AVATAR.y == y) { 
     explore.message = "You rest for awhile.";
     avatar_sleep();
     sounds_play(SFX_COIN);
@@ -123,7 +124,7 @@ function mapscript_haybale(x, y) {
 function mapscript_chest(x, y, status, item_type, item_count) {
 
   // if the player has already opened this chest, hide the chest
-  if (avatar.campaign.indexOf(status) > -1) {
+  if (GLOBALS.AVATAR.campaign.indexOf(status) > -1) {
 
     // interior chest
     if (mazemap_get_tile(x,y) == 8) {
@@ -138,8 +139,8 @@ function mapscript_chest(x, y, status, item_type, item_count) {
 
   // if this is a new chest, open it and grant the reward.
   else {
-    if (avatar.x == x && avatar.y == y) { 
-      avatar.campaign.push(status);
+    if (GLOBALS.AVATAR.x == x && GLOBALS.AVATAR.y == y) { 
+      GLOBALS.AVATAR.campaign.push(status);
       mapscript_grant_item(item_type, item_count);
       return true;
     }
@@ -163,36 +164,36 @@ function mapscript_grant_item(item, item_count) {
   }
 
   if (item == "Gold") {
-    avatar.gold += item_count;
+    GLOBALS.AVATAR.gold += item_count;
 
     // flag gold treasure for display while exploring    
     explore.gold_value = item_count;
   }
   else if (item == "Wood Stick") {
     // only keep the stick if it's better than what you already have
-    if (avatar.weapon == 0) avatar.weapon = 1;
+    if (GLOBALS.AVATAR.weapon == 0) GLOBALS.AVATAR.weapon = 1;
     explore.treasure_id = 10;
   }
   else if (item == "Spellbook: Heal") {
-    if (avatar.spellbook == 0) avatar.spellbook = 1;
+    if (GLOBALS.AVATAR.spellbook == 0) GLOBALS.AVATAR.spellbook = 1;
     explore.treasure_id = 11;
   }
   else if (item == "Magic Sapphire (MP Up)") {
-    avatar.mp += 2;
-    avatar.max_mp += 2;
+    GLOBALS.AVATAR.mp += 2;
+    GLOBALS.AVATAR.max_mp += 2;
     explore.treasure_id = 12;
   }
   else if (item == "Magic Emerald (HP Up)") {
-    avatar.hp += 5;
-    avatar.max_hp += 5;
+    GLOBALS.AVATAR.hp += 5;
+    GLOBALS.AVATAR.max_hp += 5;
     explore.treasure_id = 13;
   }
   else if (item == "Magic Ruby (Atk Up)") {
-    avatar.bonus_atk += 1;
+    GLOBALS.AVATAR.bonus_atk += 1;
     explore.treasure_id = 14;
   }
   else if (item == "Magic Diamond (Def Up)") {
-    avatar.bonus_def += 1;
+    GLOBALS.AVATAR.bonus_def += 1;
     explore.treasure_id = 15;
   }
   
@@ -206,7 +207,7 @@ function mapscript_bone_pile_save(x, y) {
         x == mapscript.bone_piles[i].x &&
         y == mapscript.bone_piles[i].y) {
 
-      avatar.campaign.push(mapscript.bone_piles[i].status);
+      GLOBALS.AVATAR.campaign.push(mapscript.bone_piles[i].status);
     }
   }
 }
@@ -217,7 +218,7 @@ function mapscript_bone_pile_load(map_id) {
   for (var i=0; i < mapscript.bone_piles.length; i++) {
     if (mapscript.bone_piles[i].map_id == map_id) {
     
-      if (avatar.campaign.indexOf(mapscript.bone_piles[i].status) > -1) {
+      if (GLOBALS.AVATAR.campaign.indexOf(mapscript.bone_piles[i].status) > -1) {
         mazemap_set_tile(mapscript.bone_piles[i].x, mapscript.bone_piles[i].y, 5);
       }
     }
@@ -232,7 +233,7 @@ function mapscript_locked_door_save(x, y) {
         x == mapscript.locked_doors[i].x &&
         y == mapscript.locked_doors[i].y) {
 
-      avatar.campaign.push(mapscript.locked_doors[i].status);
+      GLOBALS.AVATAR.campaign.push(mapscript.locked_doors[i].status);
     }
   }
 }
@@ -243,7 +244,7 @@ function mapscript_locked_door_load(map_id) {
   for (var i=0; i < mapscript.locked_doors.length; i++) {
     if (mapscript.locked_doors[i].map_id == map_id) {
     
-      if (avatar.campaign.indexOf(mapscript.locked_doors[i].status) > -1) {
+      if (GLOBALS.AVATAR.campaign.indexOf(mapscript.locked_doors[i].status) > -1) {
         mazemap_set_tile(mapscript.locked_doors[i].x, mapscript.locked_doors[i].y, 3);
       }
     }
@@ -257,11 +258,11 @@ function mapscript_enemy(x, y, enemy_id, status) {
   if (!init_complete) return false;
   
   // if heroine is at the enemy location
-  if (avatar.x == x && avatar.y == y) { 
+  if (GLOBALS.AVATAR.x == x && GLOBALS.AVATAR.y == y) { 
 
     // if heroine has not already defeated this enemy
     if (status != "") {
-      if (avatar.campaign.indexOf(status) > -1) {
+      if (GLOBALS.AVATAR.campaign.indexOf(status) > -1) {
         return false;
       }
     }
