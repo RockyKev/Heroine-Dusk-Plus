@@ -2,6 +2,7 @@
  Conversation and shop handling
  */
 import { shop_set } from "./shop.js"
+import { bitfont_render } from "./bitfont.js"
 
 // var DIALOG_BUTTON_NONE = 0;
 // var DIALOG_BUTTON_BUY = 1;
@@ -161,7 +162,7 @@ function dialog_render() {
 
   tileset_background_render(shop[GLOBAL.DIALOG.shop_id].background);
 
-  bitfont_render(GLOBAL.DIALOG.title, 80, 2, JUSTIFY_CENTER);
+  bitfont_render(GLOBAL.DIALOG.title, 80, 2, "center");
 
   // only render gold if there is something for sale
   if (GLOBAL.DIALOG.items_for_sale) {
@@ -179,7 +180,7 @@ function dialog_render() {
   action_render_select(GLOBAL.DIALOG.select_pos);
 
   if (GLOBAL.DIALOG.message != "") {
-    bitfont_render(GLOBAL.DIALOG.message, 80, 40, JUSTIFY_CENTER);
+    bitfont_render(GLOBAL.DIALOG.message, 80, 40, "center");
     GLOBAL.DIALOG.message = "";
   }
 }
@@ -188,11 +189,11 @@ function dialog_render_text(option, pos) {
   if (option.msg1 == "" && option.msg2 == "") return;
 
   if (option.msg2 == "") {
-    bitfont_render(option.msg1, pos.x + 22, pos.y + 6, JUSTIFY_LEFT);
+    bitfont_render(option.msg1, pos.x + 22, pos.y + 6, "left");
   }
   else {
-    bitfont_render(option.msg1, pos.x + 22, pos.y + 1, JUSTIFY_LEFT);
-    bitfont_render(option.msg2, pos.x + 22, pos.y + 11, JUSTIFY_LEFT);
+    bitfont_render(option.msg1, pos.x + 22, pos.y + 1, "left");
+    bitfont_render(option.msg2, pos.x + 22, pos.y + 11, "left");
   }
 }
 

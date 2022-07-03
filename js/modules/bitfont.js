@@ -10,9 +10,11 @@ Note this class is simplified in several ways:
 
  */
 
-var JUSTIFY_LEFT = 0;
-var JUSTIFY_RIGHT = 1;
-var JUSTIFY_CENTER = 2;
+import { avatar_badly_hurt } from "./avatar.js"
+
+// var JUSTIFY_LEFT = 0;
+// var JUSTIFY_RIGHT = 1;
+// var JUSTIFY_CENTER = 2;
 
 var FONT_WHITE = 0;
 var FONT_RED = 1;
@@ -121,7 +123,7 @@ function bitfont_onloadred() {
 /**
  * Render text left-justified at x,y
  */
-function bitfont_render(text, x, y, justify) {
+export function bitfont_render(text, x, y, justify = "left") {
 
   if (!bitfont.loaded) return;
 
@@ -139,14 +141,16 @@ function bitfont_render(text, x, y, justify) {
  * based on the justify option
  */
 function bitfont_setposition(text, x, justify) {
-  if (justify == JUSTIFY_LEFT) {
+  if (justify == "left") {
     bitfont.cursor_x = x;
   }
-  else if (justify == JUSTIFY_RIGHT) {
+  else if (justify == "right") {
     bitfont.cursor_x = x - bitfont_calcwidth(text);
   }
-  else if (justify == JUSTIFY_CENTER) {
+  else if (justify == "center") {
     bitfont.cursor_x = x - (bitfont_calcwidth(text)/2);
+  } else {
+    console.error("missing justify")
   }
 }
 

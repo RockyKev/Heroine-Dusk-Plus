@@ -3,6 +3,8 @@
  
  */
 
+import { bitfont_render } from "./bitfont.js"
+
 // var explore = new Object();
 // explore.encounter_chance = 0;
 // explore.encounter_increment = .05;
@@ -114,7 +116,7 @@ function explore_render() {
 
   // HUD elements
   // direction
-  bitfont_render(avatar.facing, 80, 2, JUSTIFY_CENTER);
+  bitfont_render(avatar.facing, 80, 2, "center");
   
   info_render_button();
 
@@ -124,10 +126,10 @@ function explore_render() {
     
   // if there is treasure to display, put the message higher
   if (GLOBAL.explore.gold_value > 0 || GLOBAL.explore.treasure_id > 0) {
-    bitfont_render(GLOBAL.explore.message, 80, 70, JUSTIFY_CENTER);  
+    bitfont_render(GLOBAL.explore.message, 80, 70, "center");  
   }
   else {
-    bitfont_render(GLOBAL.explore.message, 80, 100, JUSTIFY_CENTER);    
+    bitfont_render(GLOBAL.explore.message, 80, 100, "center");    
   }
   
   // if a map event has rewarded gold to the player

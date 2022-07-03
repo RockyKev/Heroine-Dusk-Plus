@@ -3,6 +3,8 @@
 
  */
 
+import { bitfont_render } from "./bitfont.js"
+
 var COMBAT_PHASE_INTRO = 0;
 var COMBAT_PHASE_INPUT = 1;
 var COMBAT_PHASE_OFFENSE = 2;
@@ -310,12 +312,12 @@ function combat_render_intro() {
 
   // TEMP: skip first frame if we want to animate in combat logic()
   if (combat.timer < COMBAT_INTRO_DELAY) enemy_render(combat.enemy.type);
-  bitfont_render(enemy.stats[combat.enemy.type].name, 80, 2, JUSTIFY_CENTER);
+  bitfont_render(enemy.stats[combat.enemy.type].name, 80, 2, "center");
 }
 
 function combat_render_input() {
   enemy_render(combat.enemy.type);
-  bitfont_render(enemy.stats[combat.enemy.type].name, 80, 2, JUSTIFY_CENTER);
+  bitfont_render(enemy.stats[combat.enemy.type].name, 80, 2, "center");
   info_render_hpmp();
   action_render();
   combat_render_offense_log();
@@ -324,7 +326,7 @@ function combat_render_input() {
 
 function combat_render_offense() {
   enemy_render(combat.enemy.type);
-  bitfont_render(enemy.stats[combat.enemy.type].name, 80, 2, JUSTIFY_CENTER);  
+  bitfont_render(enemy.stats[combat.enemy.type].name, 80, 2, "center");  
   
   // make text disappear for a short moment
   if (combat.timer <= 25) combat_render_offense_log();
@@ -332,7 +334,7 @@ function combat_render_offense() {
 
 function combat_render_defense() {
   enemy_render(combat.enemy.type);
-  bitfont_render(enemy.stats[combat.enemy.type].name, 80, 2, JUSTIFY_CENTER);  
+  bitfont_render(enemy.stats[combat.enemy.type].name, 80, 2, "center");  
 
   combat_render_offense_log();
   combat_render_defense_log();    
@@ -340,37 +342,37 @@ function combat_render_defense() {
 
 function combat_render_victory() {
   combat_render_offense_log();
-  bitfont_render(enemy.stats[combat.enemy.type].name, 80, 2, JUSTIFY_CENTER); 
+  bitfont_render(enemy.stats[combat.enemy.type].name, 80, 2, "center"); 
   info_render_hpmp();
-  bitfont_render("Victory!", 80, 60, JUSTIFY_CENTER);
-  bitfont_render(combat.reward_result, 80, 70, JUSTIFY_CENTER);
+  bitfont_render("Victory!", 80, 60, "center");
+  bitfont_render(combat.reward_result, 80, 70, "center");
   treasure_render_gold(combat.gold_treasure);
   info_render_gold();
 }
 
 function combat_render_defeat() {
   enemy_render(combat.enemy.type);
-  bitfont_render(enemy.stats[combat.enemy.type].name, 80, 2, JUSTIFY_CENTER);  
+  bitfont_render(enemy.stats[combat.enemy.type].name, 80, 2, "center");  
   combat_render_offense_log();
   combat_render_defense_log();
   info_render_hpmp();
-  bitfont_render("You are defeated...", 158, 100, JUSTIFY_RIGHT);
+  bitfont_render("You are defeated...", 158, 100, "right");
   info_render_gold();
 }
 
 function combat_render_offense_log() {
   if (combat.offense_action != "") {
-    bitfont_render("You:", 2, 20, JUSTIFY_LEFT);
-	bitfont_render(combat.offense_action, 2, 30, JUSTIFY_LEFT);
-	bitfont_render(combat.offense_result, 2, 40, JUSTIFY_LEFT);
+    bitfont_render("You:", 2, 20, "left");
+	bitfont_render(combat.offense_action, 2, 30, "left");
+	bitfont_render(combat.offense_result, 2, 40, "left");
   }
 }
 
 function combat_render_defense_log() {
   if (combat.defense_action != "") {
-    bitfont_render("Enemy:", 2, 60, JUSTIFY_LEFT);
-	bitfont_render(combat.defense_action, 2, 70, JUSTIFY_LEFT);
-	bitfont_render(combat.defense_result, 2, 80, JUSTIFY_LEFT);	
+    bitfont_render("Enemy:", 2, 60, "left");
+	bitfont_render(combat.defense_action, 2, 70, "left");
+	bitfont_render(combat.defense_result, 2, 80, "left");	
   }
 }
 

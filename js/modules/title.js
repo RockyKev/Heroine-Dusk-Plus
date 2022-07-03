@@ -3,7 +3,9 @@
 /**
  * Title screen
  */
- 
+import { bitfont_render } from "./bitfont.js"
+
+
 var TITLE_MENU_MAIN = 0;
 var TITLE_MENU_OPTIONS = 1;
 
@@ -133,20 +135,20 @@ export function title_render() {
     return;
   }
 
-  ctx.drawImage(title.img, 0, 0, 160*SCALE, 120*SCALE);
+  ctx.drawImage(title.img, 0, 0, 160*GLOBAL.SCALE, 120*GLOBAL.SCALE);
   
   for (var i=0; i<title.menu.length; i++) {
     if (title.menu_selector == i) {
-      bitfont_render("[ "+title.menu[i]+" ]", 80, 50+(i*title.text_h), JUSTIFY_CENTER);
+      bitfont_render("[ "+title.menu[i]+" ]", 80, 50+(i*title.text_h), "center");
     }
     else {
-      bitfont_render(title.menu[i], 80, 50+(i*title.text_h), JUSTIFY_CENTER);
+      bitfont_render(title.menu[i], 80, 50+(i*title.text_h), "center");
     }
   }
   
   if (title.menu_id == TITLE_MENU_MAIN) {
-    bitfont_render("by Clint Bellanger 2013", 80, 100, JUSTIFY_CENTER);
-    bitfont_render("ft. music by Yubatake", 80, 110, JUSTIFY_CENTER);
+    bitfont_render("by Clint Bellanger 2013", 80, 100, "center");
+    bitfont_render("ft. music by Yubatake", 80, 110, "center");
   }
 }
 

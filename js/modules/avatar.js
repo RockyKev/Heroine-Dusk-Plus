@@ -168,7 +168,7 @@ function avatar_turn_right() {
 }
 
 // TODO: Change this to is_avatar_badly_hurt
-function avatar_badly_hurt() {
+export function avatar_badly_hurt() {
   if (GLOBAL.AVATAR.hp <= GLOBAL.AVATAR.max_hp/3) return true;
   return false;
 }

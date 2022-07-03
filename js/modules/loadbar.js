@@ -31,7 +31,7 @@ function loadbar_render_bar(percentage, bar_color) {
   
   var load_size = (percentage * 100) / loadbar.width;
   ctx.beginPath();
-  ctx.rect(loadbar.x*SCALE, loadbar.y*SCALE, load_size*SCALE, loadbar.height*SCALE);
+  ctx.rect(loadbar.x*GLOBAL.SCALE, loadbar.y*GLOBAL.SCALE, load_size*GLOBAL.SCALE, loadbar.height*GLOBAL.SCALE);
   ctx.fillStyle = bar_color;
   ctx.fill();
   ctx.closePath();

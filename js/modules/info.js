@@ -3,6 +3,8 @@
  Display information about the heroine
  */
 
+import { bitfont_render } from "./bitfont.js"
+
 // consts
 var AVATAR_SPRITE_W = 80;
 var AVATAR_SPRITE_H = 100;
@@ -123,10 +125,10 @@ function info_render() {
   tileset_background();
   mazemap_render(avatar.x, avatar.y, avatar.facing);
  
-  bitfont_render("INFO", 80, 2, JUSTIFY_CENTER);
+  bitfont_render("INFO", 80, 2, "center");
   
   if (avatar.spellbook > 0) {
-    bitfont_render("Spells", 158, 30, JUSTIFY_RIGHT);
+    bitfont_render("Spells", 158, 30, "right");
   }
 
   info_render_equipment();
@@ -180,7 +182,7 @@ function info_render_itemlist() {
     item_string += " +";
     item_string += avatar.bonus_def;
   }
-  bitfont_render(item_string, 2, 65, JUSTIFY_LEFT);
+  bitfont_render(item_string, 2, 65, "left");
   
   // WEAPON
   item_string = GLOBAL.INFO.weapons[avatar.weapon].name;  
@@ -188,17 +190,17 @@ function info_render_itemlist() {
     item_string += " +";
     item_string += avatar.bonus_atk;    
   }  
-  bitfont_render(item_string, 2, 75, JUSTIFY_LEFT);
+  bitfont_render(item_string, 2, 75, "left");
   
 }
 
 function info_render_hpmp() { 
-  bitfont_render("HP " + avatar.hp + "/" + avatar.max_hp, 2, 100, JUSTIFY_LEFT);
-  bitfont_render("MP " + avatar.mp + "/" + avatar.max_mp, 2, 110, JUSTIFY_LEFT); 
+  bitfont_render("HP " + avatar.hp + "/" + avatar.max_hp, 2, 100, "left");
+  bitfont_render("MP " + avatar.mp + "/" + avatar.max_mp, 2, 110, "left"); 
 }
 
 function info_render_gold() {
-  bitfont_render(avatar.gold + " Gold", 158, 110, JUSTIFY_RIGHT);
+  bitfont_render(avatar.gold + " Gold", 158, 110, "right");
 }
 
 function info_render_button() {
@@ -229,11 +231,11 @@ function info_render_messages() {
   var message_displayed = false;
 
   if (GLOBAL.INFO.power_action != "") {
-    bitfont_render(GLOBAL.INFO.power_action, 2, 30, JUSTIFY_LEFT);
+    bitfont_render(GLOBAL.INFO.power_action, 2, 30, "left");
 	message_displayed = true;
   }
   if (GLOBAL.INFO.power_result != "") {
-    bitfont_render(GLOBAL.INFO.power_result, 2, 40, JUSTIFY_LEFT);
+    bitfont_render(GLOBAL.INFO.power_result, 2, 40, "left");
 	message_displayed = true;
   }
   return message_displayed;
