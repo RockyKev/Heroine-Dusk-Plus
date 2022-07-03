@@ -149,3 +149,5 @@ function touchCoord(evt) {
   
   return {x:canx, y:cany}  
 }
+
+export { handleKeyDown, handleKeyUp, handleMouseDown, handleMouseUp, handleTouchStart, handleTouchEnd };

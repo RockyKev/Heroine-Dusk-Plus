@@ -3,6 +3,8 @@
  Collection of maps and transition data
  */
 
+import { ENEMY } from "./enemy.js";
+
 var MAP_COUNT = 11;
 
 var atlas = new Object();
@@ -69,7 +71,7 @@ atlas.maps[1].exits[0] = {exit_x:7, exit_y:6, dest_map:0, dest_x:1, dest_y:2};
 atlas.maps[1].exits[1] = {exit_x:1, exit_y:6, dest_map:2, dest_x:1, dest_y:2};
 atlas.maps[1].exits[2] = {exit_x:4, exit_y:0, dest_map:3, dest_x:2, dest_y:4};
 atlas.maps[1].exits[3] = {exit_x:4, exit_y:10, dest_map:4, dest_x:6, dest_y:2};
-atlas.maps[1].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_IMP];
+atlas.maps[1].enemies = [ENEMY.SHADOW_TENDRILS, ENEMY.IMP];
 
 // LOCATION: Monk Quarters
 atlas.maps[2].name = "Monk Quarters";
@@ -127,7 +129,7 @@ atlas.maps[4].tiles = [
 ];
 atlas.maps[4].exits[0] = {exit_x:6, exit_y:1, dest_map:1, dest_x:4, dest_y:9};
 atlas.maps[4].exits[1] = {exit_x:10, exit_y:15, dest_map:5, dest_x:3, dest_y:1};
-atlas.maps[4].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_IMP, ENEMY_SHADOW_SOUL];
+atlas.maps[4].enemies = [ENEMY.SHADOW_TENDRILS, ENEMY.IMP, ENEMY.SHADOW_SOUL];
 atlas.maps[4].shops[0] = {exit_x:5, exit_y:13, shop_id:4, dest_x:5, dest_y:12};
 
 // LOCATION: Cedar Village
@@ -184,7 +186,7 @@ atlas.maps[6].tiles = [
 atlas.maps[6].exits[0] = {exit_x:4, exit_y:2, dest_map:5, dest_x:9, dest_y:10};
 atlas.maps[6].exits[1] = {exit_x:14, exit_y:7, dest_map:7, dest_x:2, dest_y:5};
 atlas.maps[6].exits[2] = {exit_x:8, exit_y:15, dest_map:10, dest_x:2, dest_y:1};
-atlas.maps[6].enemies = [ENEMY_IMP, ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE];
+atlas.maps[6].enemies = [ENEMY.IMP, ENEMY.SHADOW_SOUL, ENEMY.ZOMBIE];
 
 // LOCATION: Canal Boneyard
 atlas.maps[7].name = "Canal Boneyard";
@@ -207,7 +209,7 @@ atlas.maps[7].tiles = [
 ];
 atlas.maps[7].exits[0] = {exit_x:1, exit_y:5, dest_map:6, dest_x:13, dest_y:7};
 atlas.maps[7].exits[1] = {exit_x:10, exit_y:5, dest_map:8, dest_x:1, dest_y:7};
-atlas.maps[7].enemies = [ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE, ENEMY_SKELETON];
+atlas.maps[7].enemies = [ENEMY.SHADOW_SOUL, ENEMY.ZOMBIE, ENEMY.SKELETON];
 
 // LOCATION: Mausoleum
 atlas.maps[8].name = "Mausoleum";
@@ -234,7 +236,7 @@ atlas.maps[8].tiles = [
 ];
 atlas.maps[8].exits[0] = {exit_x:0, exit_y:7, dest_map:7, dest_x:9, dest_y:5};
 atlas.maps[8].exits[1] = {exit_x:15, exit_y:7, dest_map:9, dest_x:1, dest_y:5};
-atlas.maps[8].enemies = [ENEMY_ZOMBIE, ENEMY_SKELETON, ENEMY_DRUID];
+atlas.maps[8].enemies = [ENEMY.ZOMBIE, ENEMY.SKELETON, ENEMY.DRUID];
 
 // LOCATION: Dead Walkway
 atlas.maps[9].name = "Dead Walkways";
@@ -255,7 +257,7 @@ atlas.maps[9].tiles = [
   [ 0, 0, 0, 0, 9, 1, 1, 1, 1, 0, 0, 0, 0]
 ];
 atlas.maps[9].exits[0] = {exit_x:0, exit_y:5, dest_map:8, dest_x:14, dest_y:7};
-atlas.maps[9].enemies = [ENEMY_ZOMBIE, ENEMY_SKELETON, ENEMY_DRUID, ENEMY_DRUID]; // druids are common here
+atlas.maps[9].enemies = [ENEMY.ZOMBIE, ENEMY.SKELETON, ENEMY.DRUID, ENEMY.DRUID]; // druids are common here
 
 // LOCATION: Trade Tunnel
 atlas.maps[10].name = "Trade Tunnel";
@@ -282,9 +284,10 @@ atlas.maps[10].tiles = [
   [ 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
 ];
 atlas.maps[10].exits[0] = {exit_x:2, exit_y:0, dest_map:6, dest_x:8, dest_y:14};
-atlas.maps[10].enemies = [ENEMY_ZOMBIE, ENEMY_SKELETON, ENEMY_DRUID];
+atlas.maps[10].enemies = [ENEMY.ZOMBIE, ENEMY.SKELETON, ENEMY.DRUID];
 atlas.maps[10].shops[0] = {exit_x:2, exit_y:15, shop_id:5, dest_x:2, dest_y:14};
 atlas.maps[10].shops[1] = {exit_x:11, exit_y:9, shop_id:6, dest_x:12, dest_y:9};
 atlas.maps[10].shops[2] = {exit_x:13, exit_y:7, shop_id:7, dest_x:13, dest_y:8};
 
 
+export { atlas };

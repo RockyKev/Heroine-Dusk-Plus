@@ -216,3 +216,4 @@ function bitfont_renderglyph(character, y) {
 
 }
 
+export { bitfont_init };

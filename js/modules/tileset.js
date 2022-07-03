@@ -17,11 +17,11 @@ tileset.background = new Image();
 tileset.render_offset = {x:0, y:0};
 
 // notice we skip 0 which means "no tile"
-for (i=1; i<=TILE_COUNT; i++) {
+for (let i=1; i<=TILE_COUNT; i++) {
   tileset.tile_img[i] = new Image();
 }
 
-for (i=0; i<BACKGROUND_COUNT; i++) {
+for (let i=0; i<BACKGROUND_COUNT; i++) {
   tileset.background_img[i] = new Image();
 }
 
@@ -52,7 +52,7 @@ tileset.draw_area = [
 
 //---- Public Functions ---------------------------------------------
 
-function tileset_init() {
+export function tileset_init() {
 
   // load background images
   tileset.background_img[0].src = "images/backgrounds/black.png";
