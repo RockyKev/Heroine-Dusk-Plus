@@ -9,7 +9,7 @@ boss.boneshield_loaded = false;
 boss.boneshield_active = false;
 boss.boneshield_count = 0;
 
-function boss_init() {
+export function boss_init() {
   boss.boneshield_img.src = "images/enemies/bone_shield.png";
   boss.boneshield_img.onload = function() {boss_boneshield_onload();};
 }

@@ -7,7 +7,7 @@ import { mazemap_set } from "./mazemap.js";
 
 // var avatar = new Object();
 GLOBALS.AVATAR.campaign = new Array();
-var avatar_continue = false;
+GLOBALS.AVATAR.avatar_continue = false;
 
 //---- Public Functions ---------------------------------------------
 export function avatar_init() {
@@ -21,11 +21,11 @@ export function avatar_init() {
 
       // normal continue
       mazemap_set(GLOBALS.AVATAR.map_id);
-      avatar_continue = true;
+      GLOBALS.AVATAR.avatar_continue = true;
     }
     else if (GLOBALS.AVATAR.sleeploc) {
       avatar_respawn();
-	  avatar_continue = true;
+	  GLOBALS.AVATAR.avatar_continue = true;
     }
     else {
       avatar_reset();

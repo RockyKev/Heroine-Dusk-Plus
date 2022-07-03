@@ -65,16 +65,7 @@ shop[8].background = 2;
 
 // TODO: Move this to shop system. Move the above to shop content.
 export function shop_set(shop_id) {
-  
-  dialog.shop_id = shop_id;
-  dialog.title = shop[shop_id].name;
-  dialog.select_pos = BUTTON_POS_OPT2;
-  dialog.items_for_sale = false;
-
-  // most shops should use the exit button as the third option
-  dialog.option[2].button = DIALOG_BUTTON_EXIT;
-  dialog.option[2].msg1 = "Exit";
-  dialog.option[2].msg2 = "";
+ 
 
   // shops can have two items for purchase
   for (var i=0; i<=1; i++) {
@@ -100,76 +91,100 @@ export function shop_set(shop_id) {
     }
   }
 
+  // return the data
+
+  // return {
+  //   shop_id: shop_id,
+  //   title: shop[shop_id].name,
+  //   select_pos: BUTTON_POS_OPT2,
+  //   items_for_sale: false,
+  //   option_third: {
+  //     button: DIALOG_BUTTON_EXIT,
+  //     msg1: "Exit",
+  //     msg2: ""
+  //   }
+  // }
+  GLOBALS.DIALOG.shop_id = shop_id;
+  GLOBALS.DIALOG.title = shop[shop_id].name;
+  GLOBALS.DIALOG.select_pos = BUTTON_POS_OPT2;
+  GLOBALS.DIALOG.items_for_sale = false;
+
+  // most shops should use the exit button as the third option
+  GLOBALS.DIALOG.option[2].button = DIALOG_BUTTON_EXIT;
+  GLOBALS.DIALOG.option[2].msg1 = "Exit";
+  GLOBALS.DIALOG.option[2].msg2 = "";
+
+  
 }
 
 function shop_set_weapon(slot, weapon_id) {
   var disable_reason = "";
-  if (weapon_id == avatar.weapon) disable_reason = "(You own this)";
-  else if (weapon_id < avatar.weapon) disable_reason = "(Yours is better)";
+  if (weapon_id == GLOBALS.AVATAR.weapon) disable_reason = "(You own this)";
+  else if (weapon_id < GLOBALS.AVATAR.weapon) disable_reason = "(Yours is better)";
 
-  shop_set_buy(slot, info.weapons[weapon_id].name, info.weapons[weapon_id].gold, disable_reason);
+  shop_set_buy(slot, GLOBALS.INFO.weapons[weapon_id].name, GLOBALS.INFO.weapons[weapon_id].gold, disable_reason);
 }
 
 function shop_set_armor(slot, armor_id) {
   var disable_reason = "";
-  if (armor_id == avatar.armor) disable_reason = "(You own this)";
-  else if (armor_id < avatar.armor) disable_reason = "(Yours is better)";
+  if (armor_id == GLOBALS.AVATAR.armor) disable_reason = "(You own this)";
+  else if (armor_id < GLOBALS.AVATAR.armor) disable_reason = "(Yours is better)";
 
-  shop_set_buy(slot, info.armors[armor_id].name, info.armors[armor_id].gold, disable_reason);
+  shop_set_buy(slot, GLOBALS.INFO.armors[armor_id].name, GLOBALS.INFO.armors[armor_id].gold, disable_reason);
 }
 
 function shop_set_spell(slot, spell_id) {
   var disable_reason = "";
-  if (spell_id <= avatar.spellbook) disable_reason = "(You know this)";
-  else if (spell_id > avatar.spellbook +1) disable_reason = "(Too advanced)";
+  if (spell_id <= GLOBALS.AVATAR.spellbook) disable_reason = "(You know this)";
+  else if (spell_id > GLOBALS.AVATAR.spellbook +1) disable_reason = "(Too advanced)";
   
-  shop_set_buy(slot, "Spellbook: " + info.spells[spell_id].name, info.spells[spell_id].gold, disable_reason); 
+  shop_set_buy(slot, "Spellbook: " + GLOBALS.INFO.spells[spell_id].name, GLOBALS.INFO.spells[spell_id].gold, disable_reason); 
 }
 
 function shop_set_room(slot, room_cost) {
   var disable_reason = "";
-  if (avatar.hp == avatar.max_hp && avatar.mp == avatar.max_mp) disable_reason = "(You are well rested)";
+  if (GLOBALS.AVATAR.hp == GLOBALS.AVATAR.max_hp && GLOBALS.AVATAR.mp == GLOBALS.AVATAR.max_mp) disable_reason = "(You are well rested)";
   shop_set_buy(slot, "Room for the night", room_cost, disable_reason);
 }
 
 function shop_set_message(slot, msg1, msg2) {
-  dialog.option[slot].button = DIALOG_BUTTON_NONE;
-  dialog.option[slot].msg1 = msg1;
-  dialog.option[slot].msg2 = msg2;
+  GLOBALS.DIALOG.option[slot].button = DIALOG_BUTTON_NONE;
+  GLOBALS.DIALOG.option[slot].msg1 = msg1;
+  GLOBALS.DIALOG.option[slot].msg2 = msg2;
 }
 
 function shop_set_buy(slot, name, cost, disable_reason) {
 
-  dialog.option[slot].msg1 = "Buy " + name;
+  GLOBALS.DIALOG.option[slot].msg1 = "Buy " + name;
 
   // show the gold cost or the reason you can't
   if (disable_reason != "") {
-    dialog.option[slot].msg2 = disable_reason;
+    GLOBALS.DIALOG.option[slot].msg2 = disable_reason;
   }
   else {
-    dialog.option[slot].msg2 = "for " + cost + " gold";
+    GLOBALS.DIALOG.option[slot].msg2 = "for " + cost + " gold";
   }
 
   // display the dialog button if the item can be purchased
   var can_buy = true;
-  if (avatar.gold < cost) can_buy = false;
+  if (GLOBALS.AVATAR.gold < cost) can_buy = false;
   if (disable_reason != "") can_buy = false;
 
   if (can_buy) {
-    dialog.option[slot].button = DIALOG_BUTTON_BUY;
+    GLOBALS.DIALOG.option[slot].button = DIALOG_BUTTON_BUY;
   }
   else {
-    dialog.option[slot].button = DIALOG_BUTTON_NONE;
+    GLOBALS.DIALOG.option[slot].button = DIALOG_BUTTON_NONE;
   }
   
   // used to determine whether to display current gold
-  dialog.items_for_sale = true;
+  GLOBALS.DIALOG.items_for_sale = true;
 }
 
 function shop_clear_slot(slot) {
-  dialog.option[slot].msg1 = "";
-  dialog.option[slot].msg2 = "";
-  dialog.option[slot].button = DIALOG_BUTTON_NONE;
+  GLOBALS.DIALOG.option[slot].msg1 = "";
+  GLOBALS.DIALOG.option[slot].msg2 = "";
+  GLOBALS.DIALOG.option[slot].button = DIALOG_BUTTON_NONE;
 }
 
 //---- Handle choices for shops --------
@@ -203,51 +218,51 @@ function shop_act(shop_id, slot_id) {
 }
 
 function shop_buy_weapon(weapon_id) {
-  var cost = info.weapons[weapon_id].gold;
-  if (avatar.gold < cost) return;
+  var cost = GLOBALS.INFO.weapons[weapon_id].gold;
+  if (GLOBALS.AVATAR.gold < cost) return;
 
-  avatar.gold -= cost;
+  GLOBALS.AVATAR.gold -= cost;
   sounds_play(SFX_COIN);
-  avatar.weapon = weapon_id;
-  dialog.message = "Bought " + info.weapons[weapon_id].name;
-  shop_set(dialog.shop_id);
+  GLOBALS.AVATAR.weapon = weapon_id;
+  GLOBALS.DIALOG.message = "Bought " + GLOBALS.INFO.weapons[weapon_id].name;
+  shop_set(GLOBALS.DIALOG.shop_id);
   redraw = true;
 
 }
 
 function shop_buy_armor(armor_id) {
-  var cost = info.armors[armor_id].gold;
-  if (avatar.gold < cost) return;
+  var cost = GLOBALS.INFO.armors[armor_id].gold;
+  if (GLOBALS.AVATAR.gold < cost) return;
 
-  avatar.gold -= cost;
+  GLOBALS.AVATAR.gold -= cost;
   sounds_play(SFX_COIN);
-  avatar.armor = armor_id;
-  dialog.message = "Bought " + info.armors[armor_id].name;
-  shop_set(dialog.shop_id);
+  GLOBALS.AVATAR.armor = armor_id;
+  GLOBALS.DIALOG.message = "Bought " + GLOBALS.INFO.armors[armor_id].name;
+  shop_set(GLOBALS.DIALOG.shop_id);
   redraw = true;
 }
 
 function shop_buy_spell(spell_id) {
-  var cost = info.spells[spell_id].gold;
-  if (avatar.gold < cost) return;
+  var cost = GLOBALS.INFO.spells[spell_id].gold;
+  if (GLOBALS.AVATAR.gold < cost) return;
   
-  avatar.gold -= cost;
+  GLOBALS.AVATAR.gold -= cost;
   sounds_play(SFX_COIN);
-  avatar.spellbook = spell_id;
-  dialog.message = "Learned " + info.spells[spell_id].name;
-  shop_set(dialog.shop_id);
+  GLOBALS.AVATAR.spellbook = spell_id;
+  GLOBALS.DIALOG.message = "Learned " + GLOBALS.INFO.spells[spell_id].name;
+  shop_set(GLOBALS.DIALOG.shop_id);
   redraw = true;
 }
 
 function shop_buy_room(cost) {
-  if (avatar.gold < cost) return;
+  if (GLOBALS.AVATAR.gold < cost) return;
   
-  avatar.gold -= cost;
+  GLOBALS.AVATAR.gold -= cost;
   sounds_play(SFX_COIN);
-  dialog.message = "You have rested";
+  GLOBALS.DIALOG.message = "You have rested";
   
   avatar_sleep();
-  shop_set(dialog.shop_id);
+  shop_set(GLOBALS.DIALOG.shop_id);
   redraw = true;
 }
 

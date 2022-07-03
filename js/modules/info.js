@@ -13,61 +13,62 @@ var TYPE_WEAPON = 1;
 
 
 // class info
-var info = new Object();
+// TODO: move this to global
+// var info = new Object();
 
 // image setup
-info.avatar_img = new Image();
-info.avatar_img_loaded = false;
-info.button_img = new Image();
-info.button_img_loaded = false;
+GLOBALS.INFO.avatar_img = new Image();
+GLOBALS.INFO.avatar_img_loaded = false;
+GLOBALS.INFO.button_img = new Image();
+GLOBALS.INFO.button_img_loaded = false;
 
-info.weapons = new Array();
-info.armors = new Array();
-info.spells = new Array();
+GLOBALS.INFO.weapons = new Array();
+GLOBALS.INFO.armors = new Array();
+GLOBALS.INFO.spells = new Array();
 
-info.power_action = "";
-info.power_result = "";
+GLOBALS.INFO.power_action = "";
+GLOBALS.INFO.power_result = "";
 
 // This seems really wrong
 /*** Initialize **********************/
 export function info_init() {
 
-  info.avatar_img.src = "images/interface/heroine.png";
-  info.avatar_img.onload = function() {info_avatar_onload();};
-  info.button_img.src = "images/interface/info_button.png";
-  info.button_img.onload = function() {info_button_onload();};
+  GLOBALS.INFO.avatar_img.src = "images/interface/heroine.png";
+  GLOBALS.INFO.avatar_img.onload = function() {info_avatar_onload();};
+  GLOBALS.INFO.button_img.src = "images/interface/info_button.png";
+  GLOBALS.INFO.button_img.onload = function() {info_button_onload();};
   
-  info.weapons[0] = {name:"Bare Fists",  atk_min:1,  atk_max:4,  gold:0};
-  info.weapons[1] = {name:"Wood Stick",  atk_min:2,  atk_max:6,  gold:0};
-  info.weapons[2] = {name:"Iron Knife",  atk_min:3,  atk_max:8,  gold:50};
-  info.weapons[3] = {name:"Bronze Mace", atk_min:4,  atk_max:10, gold:200};
-  info.weapons[4] = {name:"Steel Sword", atk_min:5,  atk_max:12, gold:1000};
-  info.weapons[5] = {name:"War Hammer",  atk_min:6,  atk_max:14, gold:5000};
-  info.weapons[6] = {name:"Battle Axe",  atk_min:7,  atk_max:16, gold:20000};
-  info.weapons[7] = {name:"Great Sword", atk_min:8,  atk_max:18, gold:100000};
+  GLOBALS.INFO.weapons[0] = {name:"Bare Fists",  atk_min:1,  atk_max:4,  gold:0};
+  GLOBALS.INFO.weapons[1] = {name:"Wood Stick",  atk_min:2,  atk_max:6,  gold:0};
+  GLOBALS.INFO.weapons[2] = {name:"Iron Knife",  atk_min:3,  atk_max:8,  gold:50};
+  GLOBALS.INFO.weapons[3] = {name:"Bronze Mace", atk_min:4,  atk_max:10, gold:200};
+  GLOBALS.INFO.weapons[4] = {name:"Steel Sword", atk_min:5,  atk_max:12, gold:1000};
+  GLOBALS.INFO.weapons[5] = {name:"War Hammer",  atk_min:6,  atk_max:14, gold:5000};
+  GLOBALS.INFO.weapons[6] = {name:"Battle Axe",  atk_min:7,  atk_max:16, gold:20000};
+  GLOBALS.INFO.weapons[7] = {name:"Great Sword", atk_min:8,  atk_max:18, gold:100000};
   
-  info.armors[0] = {name:"No Armor",      def:0,  gold:0};
-  info.armors[1] = {name:"Serf Rags",     def:2,  gold:0};
-  info.armors[2] = {name:"Travel Cloak",  def:4,  gold:50};
-  info.armors[3] = {name:"Hide Cuirass",  def:6,  gold:200};
-  info.armors[4] = {name:"Rivet Leather", def:8,  gold:1000};
-  info.armors[5] = {name:"Chain Maille",  def:10, gold:5000};
-  info.armors[6] = {name:"Plate Armor",   def:12, gold:20000};
-  info.armors[7] = {name:"Wyvern Scale",  def:14, gold:100000};
+  GLOBALS.INFO.armors[0] = {name:"No Armor",      def:0,  gold:0};
+  GLOBALS.INFO.armors[1] = {name:"Serf Rags",     def:2,  gold:0};
+  GLOBALS.INFO.armors[2] = {name:"Travel Cloak",  def:4,  gold:50};
+  GLOBALS.INFO.armors[3] = {name:"Hide Cuirass",  def:6,  gold:200};
+  GLOBALS.INFO.armors[4] = {name:"Rivet Leather", def:8,  gold:1000};
+  GLOBALS.INFO.armors[5] = {name:"Chain Maille",  def:10, gold:5000};
+  GLOBALS.INFO.armors[6] = {name:"Plate Armor",   def:12, gold:20000};
+  GLOBALS.INFO.armors[7] = {name:"Wyvern Scale",  def:14, gold:100000};
   
-  info.spells[0] = {name:"No Spell", gold:0};
-  info.spells[1] = {name:"Heal", gold:0};
-  info.spells[2] = {name:"Burn", gold:100};
-  info.spells[3] = {name:"Unlock", gold:500};
-  info.spells[4] = {name:"Light", gold:2500};
-  info.spells[5] = {name:"Freeze", gold:10000};
-  info.spells[6] = {name:"Reflect", gold:50000};
+  GLOBALS.INFO.spells[0] = {name:"No Spell", gold:0};
+  GLOBALS.INFO.spells[1] = {name:"Heal", gold:0};
+  GLOBALS.INFO.spells[2] = {name:"Burn", gold:100};
+  GLOBALS.INFO.spells[3] = {name:"Unlock", gold:500};
+  GLOBALS.INFO.spells[4] = {name:"Light", gold:2500};
+  GLOBALS.INFO.spells[5] = {name:"Freeze", gold:10000};
+  GLOBALS.INFO.spells[6] = {name:"Reflect", gold:50000};
   
 } 
 
 /*** Image loading Helpers **********************/
-function info_avatar_onload() {info.avatar_img_loaded = true;}
-function info_button_onload() {info.button_img_loaded = true;}
+function info_avatar_onload() {GLOBALS.INFO.avatar_img_loaded = true;}
+function info_button_onload() {GLOBALS.INFO.button_img_loaded = true;}
 
 
 /*** Logic Functions **********************/
@@ -112,8 +113,8 @@ function info_logic() {
 }
 
 function info_clear_messages() {
-  info.power_action = "";
-  info.power_result = "";
+  GLOBALS.INFO.power_action = "";
+  GLOBALS.INFO.power_result = "";
 }
 
 /*** Render Functions **********************/
@@ -144,7 +145,7 @@ function info_render() {
 }
 
 function info_render_equipment() {
-  if (!info.avatar_img_loaded) return;
+  if (!GLOBALS.INFO.avatar_img_loaded) return;
   
   // always draw the base 
   info_render_equiplayer(0, TYPE_ARMOR);
@@ -158,7 +159,7 @@ function info_render_equipment() {
 function info_render_equiplayer(itemtier, itemtype) {
 
   ctx.drawImage(
-    info.avatar_img,
+    GLOBALS.INFO.avatar_img,
     itemtier * AVATAR_SPRITE_W * PRESCALE,
     itemtype * AVATAR_SPRITE_H * PRESCALE,
     AVATAR_SPRITE_W * PRESCALE,
@@ -174,7 +175,7 @@ function info_render_itemlist() {
   var item_string;
 
   // ARMOR  
-  item_string = info.armors[avatar.armor].name;
+  item_string = GLOBALS.INFO.armors[avatar.armor].name;
   if (avatar.bonus_def > 0) {
     item_string += " +";
     item_string += avatar.bonus_def;
@@ -182,7 +183,7 @@ function info_render_itemlist() {
   bitfont_render(item_string, 2, 65, JUSTIFY_LEFT);
   
   // WEAPON
-  item_string = info.weapons[avatar.weapon].name;  
+  item_string = GLOBALS.INFO.weapons[avatar.weapon].name;  
   if (avatar.bonus_atk > 0) {
     item_string += " +";
     item_string += avatar.bonus_atk;    
@@ -202,7 +203,7 @@ function info_render_gold() {
 
 function info_render_button() {
 
-  if (!info.button_img_loaded) return;
+  if (!GLOBALS.INFO.button_img_loaded) return;
   
   var button_x;
   
@@ -212,7 +213,7 @@ function info_render_button() {
   else return;
   
   ctx.drawImage(
-    info.button_img,
+    GLOBALS.INFO.button_img,
     button_x * PRESCALE,
     0,
     BUTTON_SIZE * PRESCALE,
@@ -227,12 +228,12 @@ function info_render_button() {
 function info_render_messages() {
   var message_displayed = false;
 
-  if (info.power_action != "") {
-    bitfont_render(info.power_action, 2, 30, JUSTIFY_LEFT);
+  if (GLOBALS.INFO.power_action != "") {
+    bitfont_render(GLOBALS.INFO.power_action, 2, 30, JUSTIFY_LEFT);
 	message_displayed = true;
   }
-  if (info.power_result != "") {
-    bitfont_render(info.power_result, 2, 40, JUSTIFY_LEFT);
+  if (GLOBALS.INFO.power_result != "") {
+    bitfont_render(GLOBALS.INFO.power_result, 2, 40, JUSTIFY_LEFT);
 	message_displayed = true;
   }
   return message_displayed;

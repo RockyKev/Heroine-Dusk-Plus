@@ -21,7 +21,7 @@ function title_set_menu(id) {
   title.menu = new Array();
   
   if (id == TITLE_MENU_MAIN) {
-    if (avatar_continue) title.menu[0] = "Continue";
+    if (GLOBALS.AVATAR.avatar_continue) title.menu[0] = "Continue";
     else title.menu[0] = "Start";
 
     title.menu[1] = "Options";
@@ -45,7 +45,7 @@ function title_set_menu(id) {
   redraw = true;
 }
 
-function title_init() {
+export function title_init() {
   title.img.src = "images/backgrounds/title.png";
   title.img.onload = function() {title_onload();};
   title_set_menu(TITLE_MENU_MAIN);
@@ -93,7 +93,7 @@ function title_logic() {
   if (title.menu_confirm == true) {
     if (title.menu_id == TITLE_MENU_MAIN) {
       if (title.menu_selector == 0) {
-        if (avatar_continue) title_continue();
+        if (GLOBALS.AVATAR.avatar_continue) title_continue();
         else title_start();
       }
       else if (title.menu_selector == 1) {

@@ -8,7 +8,16 @@ var STATE_COMBAT = 1;
 var STATE_INFO = 2;
 var STATE_DIALOG = 3;
 var STATE_TITLE = 4; 
- 
+
+// TODO: Roll this into a global config
+var DIALOG_BUTTON_NONE = 0;
+var DIALOG_BUTTON_BUY = 1;
+var DIALOG_BUTTON_EXIT = 2;
+
+var BUTTON_POS_OPT0 = {x:0, y:60, w:20, h:20};
+var BUTTON_POS_OPT1 = {x:0, y:80, w:20, h:20};
+var BUTTON_POS_OPT2 = {x:0, y:100, w:20, h:20};
+
 
 window.GLOBALS = {
   VIEW_WIDTH: 160,
@@ -26,7 +35,7 @@ window.GLOBALS = {
     init_complete: false,
     gamestate: STATE_TITLE,
   },
-  AVATAR: {},
+  AVATAR: {}, // TODO: add entire bit
   EXPLORE: {
     encounter_chance: 0,
     encounter_increment: .05,
@@ -40,7 +49,9 @@ window.GLOBALS = {
     scorch: 1,
     hpdrain: 2,
     mpdrain: 3
-  }
+  },
+  INFO: {},
+  DIALOG: {},
 }
 
 // var ENEMY_POWER_ATTACK = 0;

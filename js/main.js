@@ -10,7 +10,11 @@ import { info_init } from "./modules/info.js"
 import { action_init } from "./modules/action.js"
 import { combat_init } from "./modules/combat.js"
 import { dialog_init } from "./modules/dialog.js"
+import { boss_init } from "./modules/boss.js"
+import { title_init } from "./modules/title.js"
 import { resizeCanvas } from "./modules/utils.js"
+
+
 import { enemy_init } from "./game/enemy.js"
 
 // html elements
