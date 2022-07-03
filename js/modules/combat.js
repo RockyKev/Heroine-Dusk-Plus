@@ -32,7 +32,7 @@ combat.enemy_hurt = false;
 combat.hero_hurt = false;
 combat.run_success = false;
 
-function combat_init() {
+export function combat_init() {
   combat_clear_messages();
   
 }

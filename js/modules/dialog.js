@@ -1,6 +1,7 @@
 /**
  Conversation and shop handling
  */
+import { shop_set } from "./shop.js"
 
 var DIALOG_BUTTON_NONE = 0;
 var DIALOG_BUTTON_BUY = 1;
@@ -26,11 +27,14 @@ for (var i=0; i<3; i++) {
 }
 
 /**** Initialize ***************/
-function dialog_init() {
+export function dialog_init() {
   dialog.button_img.src = "images/interface/dialog_buttons.png";
   dialog.button_img.onload = function() {dialog_button_onload();};
 
   shop_set(0);
+
+
+  
 
 }
 

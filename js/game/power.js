@@ -5,10 +5,10 @@
  * Resolve power use
  */
 
-var ENEMY_POWER_ATTACK = 0;
-var ENEMY_POWER_SCORCH = 1;
-var ENEMY_POWER_HPDRAIN = 2;
-var ENEMY_POWER_MPDRAIN = 3;
+// var ENEMY_POWER_ATTACK = 0;
+// var ENEMY_POWER_SCORCH = 1;
+// var ENEMY_POWER_HPDRAIN = 2;
+// var ENEMY_POWER_MPDRAIN = 3;
 
 function power_hero_attack() {
 
@@ -69,19 +69,34 @@ function power_enemy(enemy_id) {
   var power_choice = enemy.stats[enemy_id].powers[power_roll];
 
   switch (power_choice) {
-    case ENEMY_POWER_ATTACK:
+    case GLOBALS.ENEMY_POWERS.attack:
       power_enemy_attack();
       return;
-    case ENEMY_POWER_SCORCH:
+    case GLOBALS.ENEMY_POWERS.scorch:
       power_scorch();
       return;
-    case ENEMY_POWER_HPDRAIN:
+    case GLOBALS.ENEMY_POWERS.hpdrain:
       power_hpdrain();
       return;
-    case ENEMY_POWER_MPDRAIN:
+    case GLOBALS.ENEMY_POWERS.mpdrain:
       power_mpdrain();
       return;
   }
+  
+  // switch (power_choice) {
+  //   case ENEMY_POWER_ATTACK:
+  //     power_enemy_attack();
+  //     return;
+  //   case ENEMY_POWER_SCORCH:
+  //     power_scorch();
+  //     return;
+  //   case ENEMY_POWER_HPDRAIN:
+  //     power_hpdrain();
+  //     return;
+  //   case ENEMY_POWER_MPDRAIN:
+  //     power_mpdrain();
+  //     return;
+  // }
 }
 
 function power_enemy_attack() {

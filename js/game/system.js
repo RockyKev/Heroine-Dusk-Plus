@@ -3,7 +3,6 @@
  */
 
 // TODO: Call this a global config
- 
 var STATE_EXPLORE = 0;
 var STATE_COMBAT = 1;
 var STATE_INFO = 2;
@@ -36,7 +35,18 @@ window.GLOBALS = {
     treasure_id: 0,    
     gold_value: 0
   },
+  ENEMY_POWER: {
+    attack: 0,
+    scorch: 1,
+    hpdrain: 2,
+    mpdrain: 3
+  }
 }
+
+// var ENEMY_POWER_ATTACK = 0;
+// var ENEMY_POWER_SCORCH = 1;
+// var ENEMY_POWER_HPDRAIN = 2;
+// var ENEMY_POWER_MPDRAIN = 3;
 
 // explore.encounter_chance = 0;
 // explore.encounter_increment = .05;

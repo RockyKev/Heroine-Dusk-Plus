@@ -16,7 +16,7 @@ function isWithin(point, rect) {
   return true;
 }
 
-function resizeCanvas(globals) {
+function resizeCanvas(globals, can) {
 
   let width, height, redraw, scale, makeSmooth;
 

@@ -8,6 +8,8 @@ import { minimap_init } from "./modules/minimap.js"
 import { avatar_init } from "./modules/avatar.js"
 import { info_init } from "./modules/info.js"
 import { action_init } from "./modules/action.js"
+import { combat_init } from "./modules/combat.js"
+import { dialog_init } from "./modules/dialog.js"
 import { resizeCanvas } from "./modules/utils.js"
 import { enemy_init } from "./game/enemy.js"
 
@@ -51,12 +53,13 @@ function render() {
 
 function init() {
 
+  // TODO: name this correctly 
   can = document.getElementById("gamecanvas");
   if (can.getContext) {
     ctx = can.getContext("2d");
   }
   console.log("im here at resize canvas")
-  const newResizeCanvas = resizeCanvas(window.GLOBALS); // missing
+  const newResizeCanvas = resizeCanvas(window.GLOBALS, can); // missing
 
   can.width = newResizeCanvas.width;
   can.height = newResizeCanvas.height;

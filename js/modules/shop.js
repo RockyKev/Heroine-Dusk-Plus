@@ -63,8 +63,8 @@ shop[8].background = 2;
 
 //---- Set choice options for shops --------
 
-
-function shop_set(shop_id) {
+// TODO: Move this to shop system. Move the above to shop content.
+export function shop_set(shop_id) {
   
   dialog.shop_id = shop_id;
   dialog.title = shop[shop_id].name;
