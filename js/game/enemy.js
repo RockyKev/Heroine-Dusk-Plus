@@ -132,12 +132,12 @@ function enemy_render(enemy_id) {
     enemy.img[enemy_id],
     0,
     0,
-    160 * PRESCALE,
-    120 * PRESCALE,
-    enemy.render_offset.x * SCALE,
-    enemy.render_offset.y * SCALE,
-    160 * SCALE,
-    120 * SCALE
+    160 * GLOBAL.PRESCALE,
+    120 * GLOBAL.PRESCALE,
+    enemy.render_offset.x * GLOBAL.SCALE,
+    enemy.render_offset.y * GLOBAL.SCALE,
+    160 * GLOBAL.SCALE,
+    120 * GLOBAL.SCALE
   );
   
   // optional enemy overlays

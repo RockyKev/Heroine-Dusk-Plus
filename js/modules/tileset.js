@@ -191,14 +191,14 @@ function tileset_render(tile_id, position) {
   
   ctx.drawImage(
     tileset.tile_img[tile_id],
-    tileset.draw_area[position].src_x * PRESCALE,
-    tileset.draw_area[position].src_y * PRESCALE,
-    tileset.draw_area[position].width * PRESCALE,
-    tileset.draw_area[position].height * PRESCALE,
-    (tileset.draw_area[position].dest_x + tileset.render_offset.x) * SCALE,
-    (tileset.draw_area[position].dest_y + tileset.render_offset.y) * SCALE,
-    tileset.draw_area[position].width * SCALE,
-    tileset.draw_area[position].height * SCALE
+    tileset.draw_area[position].src_x * GLOBAL.PRESCALE,
+    tileset.draw_area[position].src_y * GLOBAL.PRESCALE,
+    tileset.draw_area[position].width * GLOBAL.PRESCALE,
+    tileset.draw_area[position].height * GLOBAL.PRESCALE,
+    (tileset.draw_area[position].dest_x + tileset.render_offset.x) * GLOBAL.SCALE,
+    (tileset.draw_area[position].dest_y + tileset.render_offset.y) * GLOBAL.SCALE,
+    tileset.draw_area[position].width * GLOBAL.SCALE,
+    tileset.draw_area[position].height * GLOBAL.SCALE
   );
 
 }

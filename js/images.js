@@ -40,10 +40,10 @@ images.onload = function() {
 images.render = function(img_id, src_x, src_y, src_w, src_h, dest_x, dest_y) {
     ctx.drawImage(
       images.img[img_id],
-      src_x * PRESCALE,
-      src_y * PRESCALE,
-      src_w * PRESCALE,
-      src_h * PRESCALE,
+      src_x * GLOBAL.PRESCALE,
+      src_y * GLOBAL.PRESCALE,
+      src_w * GLOBAL.PRESCALE,
+      src_h * GLOBAL.PRESCALE,
       dest_x * SCALE,
       dest_y * SCALE,
       src_w * SCALE,

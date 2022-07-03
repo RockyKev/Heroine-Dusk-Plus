@@ -62,28 +62,28 @@ function treasure_render_gold_icon(item_id) {
 
   ctx.drawImage(
     treasure.img,
-    (item_id * TREASURE_ICON_SIZE) * PRESCALE,
+    (item_id * TREASURE_ICON_SIZE) * GLOBAL.PRESCALE,
     0,
-    TREASURE_ICON_SIZE * PRESCALE,
-    TREASURE_ICON_SIZE * PRESCALE,
-    treasure.gold_pos[item_id].dest_x * SCALE,
-    treasure.gold_pos[item_id].dest_y * SCALE,
-    TREASURE_ICON_SIZE * SCALE,
-    TREASURE_ICON_SIZE * SCALE 
+    TREASURE_ICON_SIZE * GLOBAL.PRESCALE,
+    TREASURE_ICON_SIZE * GLOBAL.PRESCALE,
+    treasure.gold_pos[item_id].dest_x * GLOBAL.SCALE,
+    treasure.gold_pos[item_id].dest_y * GLOBAL.SCALE,
+    TREASURE_ICON_SIZE * GLOBAL.SCALE,
+    TREASURE_ICON_SIZE * GLOBAL.SCALE 
   );
 }
 
 function treasure_render_item(item_id) {
   ctx.drawImage(
     treasure.img,
-    (item_id * TREASURE_ICON_SIZE) * PRESCALE,
+    (item_id * TREASURE_ICON_SIZE) * GLOBAL.PRESCALE,
     0,
-    TREASURE_ICON_SIZE * PRESCALE,
-    TREASURE_ICON_SIZE * PRESCALE,
-    TREASURE_POS_X * SCALE,
-    TREASURE_POS_Y * SCALE,
-    TREASURE_ICON_SIZE * SCALE,
-    TREASURE_ICON_SIZE * SCALE 
+    TREASURE_ICON_SIZE * GLOBAL.PRESCALE,
+    TREASURE_ICON_SIZE * GLOBAL.PRESCALE,
+    TREASURE_POS_X * GLOBAL.SCALE,
+    TREASURE_POS_Y * GLOBAL.SCALE,
+    TREASURE_ICON_SIZE * GLOBAL.SCALE,
+    TREASURE_ICON_SIZE * GLOBAL.SCALE 
   );
 }
 

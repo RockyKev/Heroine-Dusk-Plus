@@ -304,14 +304,14 @@ function action_render() {
 function action_render_button(id, pos) {
   ctx.drawImage(
     action.button_img,
-    id * BUTTON_SIZE * PRESCALE,
+    id * BUTTON_SIZE * GLOBAL.PRESCALE,
     0,
-    BUTTON_SIZE * PRESCALE,
-    BUTTON_SIZE * PRESCALE,	
-    (pos.x + BUTTON_OFFSET) * SCALE,
-    (pos.y + BUTTON_OFFSET) * SCALE,
-    BUTTON_SIZE * SCALE,
-    BUTTON_SIZE * SCALE
+    BUTTON_SIZE * GLOBAL.PRESCALE,
+    BUTTON_SIZE * GLOBAL.PRESCALE,	
+    (pos.x + BUTTON_OFFSET) * GLOBAL.SCALE,
+    (pos.y + BUTTON_OFFSET) * GLOBAL.SCALE,
+    BUTTON_SIZE * GLOBAL.SCALE,
+    BUTTON_SIZE * GLOBAL.SCALE
   );
 }
 
@@ -321,12 +321,12 @@ function action_render_select(pos) {
     action.select_img,
     0,
     0,
-    SELECT_SIZE * PRESCALE,
-    SELECT_SIZE * PRESCALE,	
-    pos.x * SCALE,
-    pos.y * SCALE,
-    SELECT_SIZE * SCALE,
-    SELECT_SIZE * SCALE
+    SELECT_SIZE * GLOBAL.PRESCALE,
+    SELECT_SIZE * GLOBAL.PRESCALE,	
+    pos.x * GLOBAL.SCALE,
+    pos.y * GLOBAL.SCALE,
+    SELECT_SIZE * GLOBAL.SCALE,
+    SELECT_SIZE * GLOBAL.SCALE
   );
 }
 

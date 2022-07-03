@@ -205,14 +205,14 @@ function bitfont_renderglyph(character, y) {
 
     ctx.drawImage(
       font_color,
-      bitfont.glyph_x[character] * PRESCALE,
+      bitfont.glyph_x[character] * GLOBAL.PRESCALE,
       0,
-      bitfont.glyph_w[character] * PRESCALE,
-      bitfont.height * PRESCALE,
-      bitfont.cursor_x * SCALE,
-      y * SCALE,
-      bitfont.glyph_w[character] * SCALE,
-      bitfont.height * SCALE
+      bitfont.glyph_w[character] * GLOBAL.PRESCALE,
+      bitfont.height * GLOBAL.PRESCALE,
+      bitfont.cursor_x * GLOBAL.SCALE,
+      y * GLOBAL.SCALE,
+      bitfont.glyph_w[character] * GLOBAL.SCALE,
+      bitfont.height * GLOBAL.SCALE
     );
 
     bitfont.cursor_x += bitfont.glyph_w[character] + bitfont.kerning;

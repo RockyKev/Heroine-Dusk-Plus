@@ -83,9 +83,10 @@ function clickCoord(evt) {
   } 
   canx -= can.offsetLeft;
   cany -= can.offsetTop;
-  
-  canx /= SCALE;
-  cany /= SCALE;
+
+  // TODO: WTF is this? This is not clear at all
+  canx /= GLOBAL.SCALE;
+  cany /= GLOBAL.SCALE;
   
   return {x:canx, y:cany}  
 }
@@ -110,8 +111,8 @@ function touchCoord(evt) {
   canx -= can.offsetLeft;
   cany -= can.offsetTop;
   
-  canx /= SCALE;
-  cany /= SCALE;
+  canx /= GLOBAL.SCALE;
+  cany /= GLOBAL.SCALE;
   
   return {x:canx, y:cany}  
 }

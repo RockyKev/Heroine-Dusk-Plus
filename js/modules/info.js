@@ -97,17 +97,17 @@ function info_logic() {
   
   // check power usage
   
-  if (action_checkuse(BUTTON_POS_HEAL) && avatar.mp > 0 && avatar.spellbook >= 1) {
+  if (action_checkuse(BUTTON_POS_HEAL) && GLOBAL.AVATAR.mp > 0 && GLOBAL.AVATAR.spellbook >= 1) {
     power_heal();
 	redraw = true;
   }
 
-  if (action_checkuse(BUTTON_POS_BURN) && avatar.mp > 0 && avatar.spellbook >= 2) {
+  if (action_checkuse(BUTTON_POS_BURN) && GLOBAL.AVATAR.mp > 0 && GLOBAL.AVATAR.spellbook >= 2) {
     power_map_burn();
     redraw = true;
   }
   
-  if (action_checkuse(BUTTON_POS_UNLOCK) && avatar.mp > 0 && avatar.spellbook >= 3) {
+  if (action_checkuse(BUTTON_POS_UNLOCK) && GLOBAL.AVATAR.mp > 0 && GLOBAL.AVATAR.spellbook >= 3) {
     power_map_unlock();
     redraw = true;
   }
@@ -123,11 +123,11 @@ function info_clear_messages() {
 function info_render() {
 
   tileset_background();
-  mazemap_render(avatar.x, avatar.y, avatar.facing);
+  mazemap_render(GLOBAL.AVATAR.x, GLOBAL.AVATAR.y, GLOBAL.AVATAR.facing);
  
   bitfont_render("INFO", 80, 2, "center");
   
-  if (avatar.spellbook > 0) {
+  if (GLOBAL.AVATAR.spellbook > 0) {
     bitfont_render("Spells", 158, 30, "right");
   }
 
@@ -153,8 +153,8 @@ function info_render_equipment() {
   info_render_equiplayer(0, TYPE_ARMOR);
 
   // render worn equipment  
-  info_render_equiplayer(avatar.armor, TYPE_ARMOR);
-  info_render_equiplayer(avatar.weapon, TYPE_WEAPON);
+  info_render_equiplayer(GLOBAL.AVATAR.armor, TYPE_ARMOR);
+  info_render_equiplayer(GLOBAL.AVATAR.weapon, TYPE_WEAPON);
   
 }
 
@@ -162,14 +162,14 @@ function info_render_equiplayer(itemtier, itemtype) {
 
   ctx.drawImage(
     GLOBAL.INFO.avatar_img,
-    itemtier * AVATAR_SPRITE_W * PRESCALE,
-    itemtype * AVATAR_SPRITE_H * PRESCALE,
-    AVATAR_SPRITE_W * PRESCALE,
-    AVATAR_SPRITE_H * PRESCALE,	
-    AVATAR_DRAW_X * SCALE,
-    AVATAR_DRAW_Y * SCALE,
-    AVATAR_SPRITE_W * SCALE,
-    AVATAR_SPRITE_H * SCALE
+    itemtier * AVATAR_SPRITE_W * GLOBAL.PRESCALE,
+    itemtype * AVATAR_SPRITE_H * GLOBAL.PRESCALE,
+    AVATAR_SPRITE_W * GLOBAL.PRESCALE,
+    AVATAR_SPRITE_H * GLOBAL.PRESCALE,	
+    AVATAR_DRAW_X * GLOBAL.SCALE,
+    AVATAR_DRAW_Y * GLOBAL.SCALE,
+    AVATAR_SPRITE_W * GLOBAL.SCALE,
+    AVATAR_SPRITE_H * GLOBAL.SCALE
   );
 }
 
@@ -177,30 +177,30 @@ function info_render_itemlist() {
   var item_string;
 
   // ARMOR  
-  item_string = GLOBAL.INFO.armors[avatar.armor].name;
-  if (avatar.bonus_def > 0) {
+  item_string = GLOBAL.INFO.armors[GLOBAL.AVATAR.armor].name;
+  if (GLOBAL.AVATAR.bonus_def > 0) {
     item_string += " +";
-    item_string += avatar.bonus_def;
+    item_string += GLOBAL.AVATAR.bonus_def;
   }
   bitfont_render(item_string, 2, 65, "left");
   
   // WEAPON
-  item_string = GLOBAL.INFO.weapons[avatar.weapon].name;  
-  if (avatar.bonus_atk > 0) {
+  item_string = GLOBAL.INFO.weapons[GLOBAL.AVATAR.weapon].name;  
+  if (GLOBAL.AVATAR.bonus_atk > 0) {
     item_string += " +";
-    item_string += avatar.bonus_atk;    
+    item_string += GLOBAL.AVATAR.bonus_atk;    
   }  
   bitfont_render(item_string, 2, 75, "left");
   
 }
 
 function info_render_hpmp() { 
-  bitfont_render("HP " + avatar.hp + "/" + avatar.max_hp, 2, 100, "left");
-  bitfont_render("MP " + avatar.mp + "/" + avatar.max_mp, 2, 110, "left"); 
+  bitfont_render("HP " + GLOBAL.AVATAR.hp + "/" + GLOBAL.AVATAR.max_hp, 2, 100, "left");
+  bitfont_render("MP " + GLOBAL.AVATAR.mp + "/" + GLOBAL.AVATAR.max_mp, 2, 110, "left"); 
 }
 
 function info_render_gold() {
-  bitfont_render(avatar.gold + " Gold", 158, 110, "right");
+  bitfont_render(GLOBAL.AVATAR.gold + " Gold", 158, 110, "right");
 }
 
 function info_render_button() {
@@ -216,14 +216,14 @@ function info_render_button() {
   
   ctx.drawImage(
     GLOBAL.INFO.button_img,
-    button_x * PRESCALE,
+    button_x * GLOBAL.PRESCALE,
     0,
-    BUTTON_SIZE * PRESCALE,
-    BUTTON_SIZE * PRESCALE,	
-    (BUTTON_POS_INFO.x + BUTTON_OFFSET) * SCALE,
-    (BUTTON_POS_INFO.y + BUTTON_OFFSET) * SCALE,
-    BUTTON_SIZE * SCALE,
-    BUTTON_SIZE * SCALE
+    BUTTON_SIZE * GLOBAL.PRESCALE,
+    BUTTON_SIZE * GLOBAL.PRESCALE,	
+    (BUTTON_POS_INFO.x + BUTTON_OFFSET) * GLOBAL.SCALE,
+    (BUTTON_POS_INFO.y + BUTTON_OFFSET) * GLOBAL.SCALE,
+    BUTTON_SIZE * GLOBAL.SCALE,
+    BUTTON_SIZE * GLOBAL.SCALE
   );
 }
 

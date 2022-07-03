@@ -114,28 +114,28 @@ function minimap_render_icon(screen_x, screen_y, icon_type) {
  
   ctx.drawImage(
     minimap.img,
-    icon_type * MINIMAP_ICON_SIZE * PRESCALE,
+    icon_type * MINIMAP_ICON_SIZE * GLOBAL.PRESCALE,
 	0,
-	MINIMAP_ICON_SIZE * PRESCALE,
-	MINIMAP_ICON_SIZE * PRESCALE,
-    screen_x * SCALE,
-    screen_y * SCALE,
-    MINIMAP_ICON_SIZE * SCALE,
-    MINIMAP_ICON_SIZE * SCALE
+	MINIMAP_ICON_SIZE * GLOBAL.PRESCALE,
+	MINIMAP_ICON_SIZE * GLOBAL.PRESCALE,
+    screen_x * GLOBAL.SCALE,
+    screen_y * GLOBAL.SCALE,
+    MINIMAP_ICON_SIZE * GLOBAL.SCALE,
+    MINIMAP_ICON_SIZE * GLOBAL.SCALE
   );
 }
 
 function minimap_render_cursor(screen_x, screen_y, cursor_dir) {
  ctx.drawImage(
     minimap.cursor,
-    cursor_dir * MINIMAP_ICON_SIZE * PRESCALE,
+    cursor_dir * MINIMAP_ICON_SIZE * GLOBAL.PRESCALE,
 	0,
-	MINIMAP_ICON_SIZE * PRESCALE,
-    MINIMAP_ICON_SIZE * PRESCALE,
-    screen_x * SCALE,
-    screen_y * SCALE,
-    MINIMAP_ICON_SIZE * SCALE,
-    MINIMAP_ICON_SIZE * SCALE
+	MINIMAP_ICON_SIZE * GLOBAL.PRESCALE,
+    MINIMAP_ICON_SIZE * GLOBAL.PRESCALE,
+    screen_x * GLOBAL.SCALE,
+    screen_y * GLOBAL.SCALE,
+    MINIMAP_ICON_SIZE * GLOBAL.SCALE,
+    MINIMAP_ICON_SIZE * GLOBAL.SCALE
   );
 }
 
