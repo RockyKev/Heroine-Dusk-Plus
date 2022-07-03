@@ -1,6 +1,6 @@
 
 import { handleKeyDown, handleKeyUp, handleMouseDown, handleMouseUp, handleTouchStart, handleTouchEnd } from "./game/input.js"
-import { gamestate_logic } from "./modules/gamestate.js"
+import { gamestate_logic, gamestate_render } from "./modules/gamestate.js"
 
 import { enemy_init } from "./game/enemy.js"
 import { getCookie, setCookie } from "./game/saveload.js"
@@ -25,8 +25,8 @@ import { resizeCanvas } from "./modules/utils.js"
 
 
 // html elements
-var can;     // canvas
-var ctx;     // context
+// var can;     // canvas
+// var ctx;     // context
 var FPS = 60;
 
 // this style of game doesn't update visually often
@@ -65,11 +65,12 @@ function render() {
 function init() {
 
   // TODO: name this correctly 
-  can = document.getElementById("gamecanvas");
-  if (can.getContext) {
-    ctx = can.getContext("2d");
-  }
-  console.log("im here at resize canvas")
+  // can = document.getElementById("gamecanvas");
+  // if (can.getContext) {
+  //   ctx = can.getContext("2d");
+  // }
+  
+  console.log("main init")
   const newResizeCanvas = resizeCanvas(window.GLOBAL, can); // missing
 
   can.width = newResizeCanvas.width;

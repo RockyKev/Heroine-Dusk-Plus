@@ -126,7 +126,7 @@ export function title_logic() {
   }
 }
 
-function title_render() {
+export function title_render() {
 
   if (!bitfont.loaded || !title.img_loaded) {
     GLOBAL.STATE.redraw = true;

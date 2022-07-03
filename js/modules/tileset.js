@@ -4,6 +4,8 @@ TileSet class.
 2013 Clint Bellanger
 */
 
+import { loadbar_render } from "./loadbar.js" // TODO: This shouldn't be here
+
 var TILE_COUNT = 19;
 var BACKGROUND_COUNT = 4;
 
@@ -156,11 +158,12 @@ export function tileset_init() {
   
 }
 
+// TODO: detach this from using loadbar. 
 function tileset_onload() {
   tileset.load_counter++;
   var percent_loaded = (tileset.load_counter * 100) / (TILE_COUNT + BACKGROUND_COUNT);
   
-  if (percent_loaded == 100) redraw = true;
+  if (percent_loaded == 100) GLOBAL.STATE.redraw = true;
   
   // we can get the game moving if at least the tiles are finished loading
   else loadbar_render(percent_loaded);

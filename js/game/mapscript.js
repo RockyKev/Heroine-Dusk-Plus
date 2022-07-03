@@ -255,7 +255,7 @@ function mapscript_locked_door_load(map_id) {
 function mapscript_enemy(x, y, enemy_id, status) {
 
   // don't spawn the enemy if just loading
-  if (!init_complete) return false;
+  if (!GLOBAL.STATE.init_complete) return false;
   
   // if heroine is at the enemy location
   if (GLOBAL.AVATAR.x == x && GLOBAL.AVATAR.y == y) { 

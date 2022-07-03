@@ -17,7 +17,7 @@ var JUSTIFY_CENTER = 2;
 var FONT_WHITE = 0;
 var FONT_RED = 1;
 
-var bitfont = new Object();
+// var bitfont = new Object();
 
 bitfont.img = new Image();
 bitfont.imgred = new Image();
@@ -157,8 +157,8 @@ function bitfont_setcolor(color_id) {
 /**
  * Note: contains logic specific to Heroine Dusk
  */
-function bitfont_determinecolor() {
-  if (!init_complete) bitfont_setcolor(FONT_WHITE);
+export function bitfont_determinecolor() {
+  if (!GLOBAL.STATE.init_complete) bitfont_setcolor(FONT_WHITE);
   else if (!bitfont.loadedred) bitfont_setcolor(FONT_WHITE);
   else if (avatar_badly_hurt()) bitfont_setcolor(FONT_RED);
   else bitfont_setcolor(FONT_WHITE);

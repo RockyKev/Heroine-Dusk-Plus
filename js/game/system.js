@@ -2,6 +2,15 @@
  Various config options to help deployment to different platforms.
  */
 
+var can;     // canvas
+var ctx;     // context
+
+can = document.getElementById("gamecanvas");
+if (can.getContext) {
+  ctx = can.getContext("2d");
+}
+
+
 // TODO: Call this a global config
 var STATE_EXPLORE = 0;
 var STATE_COMBAT = 1;
@@ -53,6 +62,8 @@ var ALTCODE_LEFT   = 65; // a
 var ALTCODE_RIGHT  = 68; // d
 var ALTCODE_ACTION = 13; // enter
 
+// BITFONT
+var bitfont = new Object();
 
 window.GLOBAL = {
   VIEW_WIDTH: 160,
