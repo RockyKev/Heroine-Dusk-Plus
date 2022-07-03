@@ -4,6 +4,7 @@
  * Title screen
  */
 import { bitfont_render } from "./bitfont.js"
+import { isWithin } from "./utils.js"
 
 
 var TITLE_MENU_MAIN = 0;
