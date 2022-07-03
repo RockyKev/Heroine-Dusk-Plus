@@ -15,7 +15,7 @@ import { title_logic } from "./title.js"
 
 export function gamestate_logic() {
 
-  switch(GLOBALS.STATE.gamestate) {
+  switch(GLOBAL.STATE.gamestate) {
     case STATE_EXPLORE:
 	  explore_logic();
 	  break;
@@ -38,7 +38,7 @@ function gamestate_render() {
 
   bitfont_determinecolor();
 
-  switch(GLOBALS.STATE.gamestate) {
+  switch(GLOBAL.STATE.gamestate) {
     case STATE_EXPLORE:
 	  explore_render();
 	  break;

@@ -6,8 +6,8 @@ import { getCookie, setCookie } from "../game/saveload.js";
 import { mazemap_set } from "./mazemap.js";
 
 // var avatar = new Object();
-GLOBALS.AVATAR.campaign = new Array();
-GLOBALS.AVATAR.avatar_continue = false;
+GLOBAL.AVATAR.campaign = new Array();
+GLOBAL.AVATAR.avatar_continue = false;
 
 //---- Public Functions ---------------------------------------------
 export function avatar_init() {
@@ -15,21 +15,21 @@ export function avatar_init() {
   // check save games
   var json_save = getCookie("mazesave");
   if (json_save != null) {
-    GLOBALS.AVATAR = JSON.parse(json_save);
+    GLOBAL.AVATAR = JSON.parse(json_save);
 
-    if (GLOBALS.AVATAR.hp > 0) {
+    if (GLOBAL.AVATAR.hp > 0) {
 
       // normal continue
-      mazemap_set(GLOBALS.AVATAR.map_id);
-      GLOBALS.AVATAR.avatar_continue = true;
+      mazemap_set(GLOBAL.AVATAR.map_id);
+      GLOBAL.AVATAR.avatar_continue = true;
     }
-    else if (GLOBALS.AVATAR.sleeploc) {
+    else if (GLOBAL.AVATAR.sleeploc) {
       avatar_respawn();
-	  GLOBALS.AVATAR.avatar_continue = true;
+	  GLOBAL.AVATAR.avatar_continue = true;
     }
     else {
       avatar_reset();
-      mazemap_set(GLOBALS.AVATAR.map_id); 
+      mazemap_set(GLOBAL.AVATAR.map_id); 
     }
     return;
   }
@@ -44,49 +44,49 @@ function avatar_save() {
 }
 
 function avatar_reset() {
-  GLOBALS.AVATAR.x = 1;
-  GLOBALS.AVATAR.y = 1;
-  GLOBALS.AVATAR.facing = "south";
-  GLOBALS.AVATAR.moved = false;
-  GLOBALS.AVATAR.map_id = 0;
-  GLOBALS.AVATAR.weapon = 0;
-  GLOBALS.AVATAR.armor = 1;
-  GLOBALS.AVATAR.hp = 25;
-  GLOBALS.AVATAR.max_hp = 25;
-  GLOBALS.AVATAR.mp = 4;
-  GLOBALS.AVATAR.max_mp = 4;
-  GLOBALS.AVATAR.gold = 0;
-  GLOBALS.AVATAR.bonus_atk = 0;
-  GLOBALS.AVATAR.bonus_def = 0;
-  GLOBALS.AVATAR.spellbook = 0;
-  GLOBALS.AVATAR.sleeploc = [0,1,1]; // map_id, x, y
-  GLOBALS.AVATAR.campaign = new Array();
+  GLOBAL.AVATAR.x = 1;
+  GLOBAL.AVATAR.y = 1;
+  GLOBAL.AVATAR.facing = "south";
+  GLOBAL.AVATAR.moved = false;
+  GLOBAL.AVATAR.map_id = 0;
+  GLOBAL.AVATAR.weapon = 0;
+  GLOBAL.AVATAR.armor = 1;
+  GLOBAL.AVATAR.hp = 25;
+  GLOBAL.AVATAR.max_hp = 25;
+  GLOBAL.AVATAR.mp = 4;
+  GLOBAL.AVATAR.max_mp = 4;
+  GLOBAL.AVATAR.gold = 0;
+  GLOBAL.AVATAR.bonus_atk = 0;
+  GLOBAL.AVATAR.bonus_def = 0;
+  GLOBAL.AVATAR.spellbook = 0;
+  GLOBAL.AVATAR.sleeploc = [0,1,1]; // map_id, x, y
+  GLOBAL.AVATAR.campaign = new Array();
 }
 
 /**
  * Sleeping restores HP and MP and sets the respawn point
  */
 function avatar_sleep() {
-  GLOBALS.AVATAR.hp = GLOBALS.AVATAR.max_hp;
-  GLOBALS.AVATAR.mp = GLOBALS.AVATAR.max_mp;
-  GLOBALS.AVATAR.sleeploc = [mazemap.current_id, GLOBALS.AVATAR.x, GLOBALS.AVATAR.y];
+  GLOBAL.AVATAR.hp = GLOBAL.AVATAR.max_hp;
+  GLOBAL.AVATAR.mp = GLOBAL.AVATAR.max_mp;
+  GLOBAL.AVATAR.sleeploc = [mazemap.current_id, GLOBAL.AVATAR.x, GLOBAL.AVATAR.y];
 }
 
 function avatar_respawn() {
   // previously died. restart at last sleep point
-  mazemap_set(GLOBALS.AVATAR.sleeploc[0]);
-  GLOBALS.AVATAR.x = GLOBALS.AVATAR.sleeploc[1];
-  GLOBALS.AVATAR.y = GLOBALS.AVATAR.sleeploc[2];
+  mazemap_set(GLOBAL.AVATAR.sleeploc[0]);
+  GLOBAL.AVATAR.x = GLOBAL.AVATAR.sleeploc[1];
+  GLOBAL.AVATAR.y = GLOBAL.AVATAR.sleeploc[2];
   
-  GLOBALS.AVATAR.hp = GLOBALS.AVATAR.max_hp;
-  GLOBALS.AVATAR.mp = GLOBALS.AVATAR.max_mp;
+  GLOBAL.AVATAR.hp = GLOBAL.AVATAR.max_hp;
+  GLOBAL.AVATAR.mp = GLOBAL.AVATAR.max_mp;
   
   // cost of death: lose all gold
-  GLOBALS.AVATAR.gold = 0;
+  GLOBAL.AVATAR.gold = 0;
 }
 
 function avatar_explore() {
-  GLOBALS.AVATAR.moved = false;
+  GLOBAL.AVATAR.moved = false;
 
   var input_up = pressing.up && !input_lock.up;
   var input_down = pressing.down && !input_lock.down;
@@ -105,19 +105,19 @@ function avatar_explore() {
     if (pressing.up) input_lock.up = true;
     if (pressing.mouse) input_lock.mouse = true;
     
-    if (GLOBALS.AVATAR.facing == "north") avatar_move(0,-1);
-    else if (GLOBALS.AVATAR.facing == "west") avatar_move(-1,0);
-    else if (GLOBALS.AVATAR.facing == "south") avatar_move(0,1);
-    else if (GLOBALS.AVATAR.facing == "east") avatar_move(1,0);
+    if (GLOBAL.AVATAR.facing == "north") avatar_move(0,-1);
+    else if (GLOBAL.AVATAR.facing == "west") avatar_move(-1,0);
+    else if (GLOBAL.AVATAR.facing == "south") avatar_move(0,1);
+    else if (GLOBAL.AVATAR.facing == "east") avatar_move(1,0);
   }
   else if (input_down) {
     if (pressing.down) input_lock.down = true;
     if (pressing.mouse) input_lock.mouse = true;
     
-    if (GLOBALS.AVATAR.facing == "north") avatar_move(0,1);
-    else if (GLOBALS.AVATAR.facing == "west") avatar_move(1,0);
-    else if (GLOBALS.AVATAR.facing == "south") avatar_move(0,-1);
-    else if (GLOBALS.AVATAR.facing == "east") avatar_move(-1,0);
+    if (GLOBAL.AVATAR.facing == "north") avatar_move(0,1);
+    else if (GLOBAL.AVATAR.facing == "west") avatar_move(1,0);
+    else if (GLOBAL.AVATAR.facing == "south") avatar_move(0,-1);
+    else if (GLOBAL.AVATAR.facing == "east") avatar_move(-1,0);
   }
   else if (input_left) {
     if (pressing.left) input_lock.left = true;
@@ -135,12 +135,12 @@ function avatar_explore() {
 }
 
 function avatar_move(dx,dy) {
-  var target_tile = mazemap_get_tile(GLOBALS.AVATAR.x+dx,GLOBALS.AVATAR.y+dy);
+  var target_tile = mazemap_get_tile(GLOBAL.AVATAR.x+dx,GLOBAL.AVATAR.y+dy);
   if (tileset.walkable[target_tile]) {
-    GLOBALS.AVATAR.x += dx;
-    GLOBALS.AVATAR.y += dy;
+    GLOBAL.AVATAR.x += dx;
+    GLOBAL.AVATAR.y += dy;
     redraw = true;
-    GLOBALS.AVATAR.moved = true;
+    GLOBAL.AVATAR.moved = true;
     avatar_save();
   }
   else {
@@ -149,27 +149,27 @@ function avatar_move(dx,dy) {
 }
 
 function avatar_turn_left() {
-  if (GLOBALS.AVATAR.facing == "north") GLOBALS.AVATAR.facing = "west";
-  else if (GLOBALS.AVATAR.facing == "west") GLOBALS.AVATAR.facing = "south";
-  else if (GLOBALS.AVATAR.facing == "south") GLOBALS.AVATAR.facing = "east";
-  else if (GLOBALS.AVATAR.facing == "east") GLOBALS.AVATAR.facing = "north";
+  if (GLOBAL.AVATAR.facing == "north") GLOBAL.AVATAR.facing = "west";
+  else if (GLOBAL.AVATAR.facing == "west") GLOBAL.AVATAR.facing = "south";
+  else if (GLOBAL.AVATAR.facing == "south") GLOBAL.AVATAR.facing = "east";
+  else if (GLOBAL.AVATAR.facing == "east") GLOBAL.AVATAR.facing = "north";
   redraw = true;
   avatar_save();
 
 }
 
 function avatar_turn_right() {
-  if (GLOBALS.AVATAR.facing == "north") GLOBALS.AVATAR.facing = "east";
-  else if (GLOBALS.AVATAR.facing == "east") GLOBALS.AVATAR.facing = "south";
-  else if (GLOBALS.AVATAR.facing == "south") GLOBALS.AVATAR.facing = "west";
-  else if (GLOBALS.AVATAR.facing == "west") GLOBALS.AVATAR.facing = "north";
+  if (GLOBAL.AVATAR.facing == "north") GLOBAL.AVATAR.facing = "east";
+  else if (GLOBAL.AVATAR.facing == "east") GLOBAL.AVATAR.facing = "south";
+  else if (GLOBAL.AVATAR.facing == "south") GLOBAL.AVATAR.facing = "west";
+  else if (GLOBAL.AVATAR.facing == "west") GLOBAL.AVATAR.facing = "north";
   redraw = true;
   avatar_save();
 }
 
 // TODO: Change this to is_avatar_badly_hurt
 function avatar_badly_hurt() {
-  if (GLOBALS.AVATAR.hp <= GLOBALS.AVATAR.max_hp/3) return true;
+  if (GLOBAL.AVATAR.hp <= GLOBAL.AVATAR.max_hp/3) return true;
   return false;
 }
 

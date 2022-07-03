@@ -54,7 +54,7 @@ var ALTCODE_RIGHT  = 68; // d
 var ALTCODE_ACTION = 13; // enter
 
 
-window.GLOBALS = {
+window.GLOBAL = {
   VIEW_WIDTH: 160,
   VIEW_HEIGHT: 120,
   PRESCALE: 1,

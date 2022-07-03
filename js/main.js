@@ -32,12 +32,12 @@ var FPS = 60;
 // this style of game doesn't update visually often
 // set this flag anytime the render function should update the view
 // var redraw = false;
-// var GLOBALS.STATE.init_complete = false;
+// var GLOBAL.STATE.init_complete = false;
 
 //---- Main Loop --------------------------------------------------
 
 setInterval(function() {
-  if (!GLOBALS.STATE.init_complete) return;
+  if (!GLOBAL.STATE.init_complete) return;
   logic();
   render();
 }, 1000/FPS);
@@ -70,12 +70,12 @@ function init() {
     ctx = can.getContext("2d");
   }
   console.log("im here at resize canvas")
-  const newResizeCanvas = resizeCanvas(window.GLOBALS, can); // missing
+  const newResizeCanvas = resizeCanvas(window.GLOBAL, can); // missing
 
   can.width = newResizeCanvas.width;
   can.height = newResizeCanvas.height;
-  GLOBALS.STATE.redraw = newResizeCanvas.redraw;
-  GLOBALS.SCALE = newResizeCanvas.scale;
+  GLOBAL.STATE.redraw = newResizeCanvas.redraw;
+  GLOBAL.SCALE = newResizeCanvas.scale;
 
   if (newResizeCanvas.makeSmooth) {
     ctx.imageSmoothingEnabled = false;
@@ -121,7 +121,7 @@ function init() {
   sounds_init();
   treasure_init();
 
-  GLOBALS.STATE.init_complete = true;
+  GLOBAL.STATE.init_complete = true;
 }
 
 //---- Run Game -----------------------------------------------

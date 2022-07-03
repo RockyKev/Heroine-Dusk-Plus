@@ -89,28 +89,28 @@ function enemy_init() {
   // set enemy stats
 
   enemy.stats[ENEMY.SHADOW_TENDRILS] = {name:"Shadow Tendrils", hp:6, atk_min:2, atk_max:5, gold_min:1, gold_max:2, category:EN_CATEGORY.SHADOW};
-  enemy.stats[ENEMY.SHADOW_TENDRILS].powers = [GLOBALS.ENEMY_POWER.attack];
+  enemy.stats[ENEMY.SHADOW_TENDRILS].powers = [GLOBAL.ENEMY_POWER.attack];
 
   enemy.stats[ENEMY.IMP] = {name:"Imp", hp:7, atk_min:2, atk_max:6, gold_min:1, gold_max:3, category:EN_CATEGORY.DEMON};
-  enemy.stats[ENEMY.IMP].powers = [GLOBALS.ENEMY_POWER.attack, GLOBALS.ENEMY_POWER.attack, GLOBALS.ENEMY_POWER.scorch];
+  enemy.stats[ENEMY.IMP].powers = [GLOBAL.ENEMY_POWER.attack, GLOBAL.ENEMY_POWER.attack, GLOBAL.ENEMY_POWER.scorch];
 
   enemy.stats[ENEMY.SHADOW_SOUL] = {name:"Shadow Soul", hp:8, atk_min:3, atk_max:8, gold_min:2, gold_max:4, category:EN_CATEGORY.SHADOW};
-  enemy.stats[ENEMY.SHADOW_SOUL].powers = [GLOBALS.ENEMY_POWER.attack, GLOBALS.ENEMY_POWER.attack, GLOBALS.ENEMY_POWER.mpdrain];
+  enemy.stats[ENEMY.SHADOW_SOUL].powers = [GLOBAL.ENEMY_POWER.attack, GLOBAL.ENEMY_POWER.attack, GLOBAL.ENEMY_POWER.mpdrain];
 
   enemy.stats[ENEMY.ZOMBIE] = {name:"Zombie", hp:12, atk_min:4, atk_max:10, gold_min:3, gold_max:6, category:EN_CATEGORY.UNDEAD};
-  enemy.stats[ENEMY.ZOMBIE].powers = [GLOBALS.ENEMY_POWER.attack, GLOBALS.ENEMY_POWER.attack, GLOBALS.ENEMY_POWER.hpdrain];
+  enemy.stats[ENEMY.ZOMBIE].powers = [GLOBAL.ENEMY_POWER.attack, GLOBAL.ENEMY_POWER.attack, GLOBAL.ENEMY_POWER.hpdrain];
 
   enemy.stats[ENEMY.SKELETON] = {name:"Skeleton", hp:18, atk_min:6, atk_max:12, gold_min:5, gold_max:8, category:EN_CATEGORY.UNDEAD};
-  enemy.stats[ENEMY.SKELETON].powers = [GLOBALS.ENEMY_POWER.attack];
+  enemy.stats[ENEMY.SKELETON].powers = [GLOBAL.ENEMY_POWER.attack];
 
   enemy.stats[ENEMY.DRUID] = {name:"Druid", hp:16, atk_min:7, atk_max:14, gold_min:7, gold_max:12, category:EN_CATEGORY.DEMON};
-  enemy.stats[ENEMY.DRUID].powers = [GLOBALS.ENEMY_POWER.attack, GLOBALS.ENEMY_POWER.scorch, GLOBALS.ENEMY_POWER.hpdrain, GLOBALS.ENEMY_POWER.mpdrain];
+  enemy.stats[ENEMY.DRUID].powers = [GLOBAL.ENEMY_POWER.attack, GLOBAL.ENEMY_POWER.scorch, GLOBAL.ENEMY_POWER.hpdrain, GLOBAL.ENEMY_POWER.mpdrain];
 
   enemy.stats[ENEMY.MIMIC] = {name:"Mimic", hp:30, atk_min:10, atk_max:16, gold_min:16, gold_max:25, category:EN_CATEGORY.AUTOMATON};
-  enemy.stats[ENEMY.MIMIC].powers = [GLOBALS.ENEMY_POWER.attack];
+  enemy.stats[ENEMY.MIMIC].powers = [GLOBAL.ENEMY_POWER.attack];
 
   enemy.stats[ENEMY.DEATH_SPEAKER] = {name:"Death Speaker", hp:84, atk_min:8, atk_max:15, gold_min:225, gold_max:275, category:EN_CATEGORY.DEMON};
-  enemy.stats[ENEMY.DEATH_SPEAKER].powers = [GLOBALS.ENEMY_POWER.attack, GLOBALS.ENEMY_POWER.scorch];
+  enemy.stats[ENEMY.DEATH_SPEAKER].powers = [GLOBAL.ENEMY_POWER.attack, GLOBAL.ENEMY_POWER.scorch];
   
 }
 

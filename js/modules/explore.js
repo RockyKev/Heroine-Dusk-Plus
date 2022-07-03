@@ -20,7 +20,7 @@
  * and completed states usually return here.
  */
 function explore_logic() {
-  GLOBALS.explore.message = "";
+  GLOBAL.explore.message = "";
 
   avatar_explore();
 	
@@ -29,7 +29,7 @@ function explore_logic() {
     if (mazemap_check_exit()) {
 	
 	  // display the name of the new map
-	  GLOBALS.explore.message = atlas.maps[mazemap.current_id].name;
+	  GLOBAL.explore.message = atlas.maps[mazemap.current_id].name;
 	  
 	  // don't allow a random encounter when switching maps
       avatar_save();
@@ -62,8 +62,8 @@ function explore_logic() {
   
   if (avatar.moved && enemy_options > 0) {
 
-    if (Math.random() < GLOBALS.explore.encounter_chance) {
-      GLOBALS.explore.encounter_chance = 0.0;
+    if (Math.random() < GLOBAL.explore.encounter_chance) {
+      GLOBAL.explore.encounter_chance = 0.0;
       gamestate = STATE_COMBAT;
       action.select_pos = BUTTON_POS_ATTACK;
       combat.timer = COMBAT_INTRO_DELAY;
@@ -77,8 +77,8 @@ function explore_logic() {
       return;
     }
     else {
-      GLOBALS.explore.encounter_chance += GLOBALS.explore.encounter_increment;
-      GLOBALS.explore.encounter_chance = Math.min(GLOBALS.explore.encounter_chance, GLOBALS.explore.encounter_max);
+      GLOBAL.explore.encounter_chance += GLOBAL.explore.encounter_increment;
+      GLOBAL.explore.encounter_chance = Math.min(GLOBAL.explore.encounter_chance, GLOBAL.explore.encounter_max);
     }
   }
   
@@ -123,23 +123,23 @@ function explore_render() {
   }
     
   // if there is treasure to display, put the message higher
-  if (GLOBALS.explore.gold_value > 0 || GLOBALS.explore.treasure_id > 0) {
-    bitfont_render(GLOBALS.explore.message, 80, 70, JUSTIFY_CENTER);  
+  if (GLOBAL.explore.gold_value > 0 || GLOBAL.explore.treasure_id > 0) {
+    bitfont_render(GLOBAL.explore.message, 80, 70, JUSTIFY_CENTER);  
   }
   else {
-    bitfont_render(GLOBALS.explore.message, 80, 100, JUSTIFY_CENTER);    
+    bitfont_render(GLOBAL.explore.message, 80, 100, JUSTIFY_CENTER);    
   }
   
   // if a map event has rewarded gold to the player
   // display it on the ground here
-  if (GLOBALS.explore.gold_value > 0) {
-    treasure_render_gold(GLOBALS.explore.gold_value);
-    GLOBALS.explore.gold_value = 0;    
+  if (GLOBAL.explore.gold_value > 0) {
+    treasure_render_gold(GLOBAL.explore.gold_value);
+    GLOBAL.explore.gold_value = 0;    
   }
   
   // display treasure on the ground
-  if (GLOBALS.explore.treasure_id > 0) {
-    treasure_render_item(GLOBALS.explore.treasure_id);
-    GLOBALS.explore.treasure_id = 0;
+  if (GLOBAL.explore.treasure_id > 0) {
+    treasure_render_item(GLOBAL.explore.treasure_id);
+    GLOBAL.explore.treasure_id = 0;
   }
 }

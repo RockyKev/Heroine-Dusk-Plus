@@ -21,7 +21,7 @@ function title_set_menu(id) {
   title.menu = new Array();
   
   if (id == TITLE_MENU_MAIN) {
-    if (GLOBALS.AVATAR.avatar_continue) title.menu[0] = "Continue";
+    if (GLOBAL.AVATAR.avatar_continue) title.menu[0] = "Continue";
     else title.menu[0] = "Start";
 
     title.menu[1] = "Options";
@@ -42,14 +42,14 @@ function title_set_menu(id) {
     title.menu[4] = "Back";
   }
 
-  GLOBALS.STATE.redraw = true;
+  GLOBAL.STATE.redraw = true;
 }
 
 export function title_init() {
   title.img.src = "images/backgrounds/title.png";
   title.img.onload = function() {title_onload();};
   title_set_menu(TITLE_MENU_MAIN);
-  GLOBALS.STATE.redraw = true;
+  GLOBAL.STATE.redraw = true;
 }
 
 function title_onload() {
@@ -67,7 +67,7 @@ export function title_logic() {
         title.menu_selector = i;
         input_lock.mouse = true;
         title.menu_confirm = true;
-        GLOBALS.STATE.redraw = true;
+        GLOBAL.STATE.redraw = true;
       }
     }
   }
@@ -79,21 +79,21 @@ export function title_logic() {
     input_lock.up = true;
     if (title.menu_selector > 0) {
       title.menu_selector--;
-      GLOBALS.STATE.redraw = true;
+      GLOBAL.STATE.redraw = true;
     }
   }
   else if (pressing.down && !input_lock.down) {
     input_lock.down = true;
     if (title.menu_selector < title.menu.length-1) {
       title.menu_selector++;
-      GLOBALS.STATE.redraw = true;
+      GLOBAL.STATE.redraw = true;
     }
   }
 
   if (title.menu_confirm == true) {
     if (title.menu_id == TITLE_MENU_MAIN) {
       if (title.menu_selector == 0) {
-        if (GLOBALS.AVATAR.avatar_continue) title_continue();
+        if (GLOBAL.AVATAR.avatar_continue) title_continue();
         else title_start();
       }
       else if (title.menu_selector == 1) {
@@ -129,7 +129,7 @@ export function title_logic() {
 function title_render() {
 
   if (!bitfont.loaded || !title.img_loaded) {
-    GLOBALS.STATE.redraw = true;
+    GLOBAL.STATE.redraw = true;
     return;
   }
 
@@ -155,11 +155,11 @@ function title_start() {
   shop_set(8);
   dialog.option[2].msg1 = "Wake up";
   mazemap_set_music(atlas.maps[mazemap.current_id].music);
-  GLOBALS.STATE.redraw = true;
+  GLOBAL.STATE.redraw = true;
 }
 
 function title_continue() {
   mazemap_set_music(atlas.maps[mazemap.current_id].music);
   gamestate = STATE_EXPLORE;
-  GLOBALS.STATE.redraw = true;
+  GLOBAL.STATE.redraw = true;
 }

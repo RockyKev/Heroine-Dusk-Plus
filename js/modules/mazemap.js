@@ -161,12 +161,12 @@ export function mazemap_set(map_id) {
   mapscript_exec(map_id);
 
   // reset encounter chance when moving to a new map
-  GLOBALS.EXPLORE.encounter_chance = 0;
+  GLOBAL.EXPLORE.encounter_chance = 0;
   
   // for save game info
-  GLOBALS.AVATAR.map_id = map_id;
+  GLOBAL.AVATAR.map_id = map_id;
 
-  if (GLOBALS.STATE.gamestate != STATE_TITLE) {
+  if (GLOBAL.STATE.gamestate != STATE_TITLE) {
     mazemap_set_music(atlas.maps[map_id].music);
   }
 
@@ -220,11 +220,11 @@ function mazemap_set_music(song_filename) {
 function mazemap_check_exit() {
   for (var i=0; i<atlas.maps[mazemap.current_id].exits.length; i++) {
 
-    if ((GLOBALS.avatar.x == atlas.maps[mazemap.current_id].exits[i].exit_x) &&
-        (GLOBALS.avatar.y == atlas.maps[mazemap.current_id].exits[i].exit_y)) {
+    if ((GLOBAL.avatar.x == atlas.maps[mazemap.current_id].exits[i].exit_x) &&
+        (GLOBAL.avatar.y == atlas.maps[mazemap.current_id].exits[i].exit_y)) {
         
-      GLOBALS.avatar.x = atlas.maps[mazemap.current_id].exits[i].dest_x;
-      GLOBALS.avatar.y = atlas.maps[mazemap.current_id].exits[i].dest_y;
+      GLOBAL.avatar.x = atlas.maps[mazemap.current_id].exits[i].dest_x;
+      GLOBAL.avatar.y = atlas.maps[mazemap.current_id].exits[i].dest_y;
       mazemap_set(atlas.maps[mazemap.current_id].exits[i].dest_map);
 
       return true;
@@ -236,14 +236,14 @@ function mazemap_check_exit() {
 function mazemap_check_shop() {
   for (var i=0; i<atlas.maps[mazemap.current_id].shops.length; i++) {
 
-    if ((GLOBALS.avatar.x == atlas.maps[mazemap.current_id].shops[i].exit_x) &&
-        (GLOBALS.avatar.y == atlas.maps[mazemap.current_id].shops[i].exit_y)) {
+    if ((GLOBAL.avatar.x == atlas.maps[mazemap.current_id].shops[i].exit_x) &&
+        (GLOBAL.avatar.y == atlas.maps[mazemap.current_id].shops[i].exit_y)) {
     
       shop_set(atlas.maps[mazemap.current_id].shops[i].shop_id);
 
       // put avatar back outside for save purposes
-      GLOBALS.avatar.x = atlas.maps[mazemap.current_id].shops[i].dest_x;
-      GLOBALS.avatar.y = atlas.maps[mazemap.current_id].shops[i].dest_y;
+      GLOBAL.avatar.x = atlas.maps[mazemap.current_id].shops[i].dest_x;
+      GLOBAL.avatar.y = atlas.maps[mazemap.current_id].shops[i].dest_y;
 
       return true;
     }  

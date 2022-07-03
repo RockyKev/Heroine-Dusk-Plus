@@ -69,16 +69,16 @@ function power_enemy(enemy_id) {
   var power_choice = enemy.stats[enemy_id].powers[power_roll];
 
   switch (power_choice) {
-    case GLOBALS.ENEMY_POWERS.attack:
+    case GLOBAL.ENEMY_POWERS.attack:
       power_enemy_attack();
       return;
-    case GLOBALS.ENEMY_POWERS.scorch:
+    case GLOBAL.ENEMY_POWERS.scorch:
       power_scorch();
       return;
-    case GLOBALS.ENEMY_POWERS.hpdrain:
+    case GLOBAL.ENEMY_POWERS.hpdrain:
       power_hpdrain();
       return;
-    case GLOBALS.ENEMY_POWERS.mpdrain:
+    case GLOBAL.ENEMY_POWERS.mpdrain:
       power_mpdrain();
       return;
   }
