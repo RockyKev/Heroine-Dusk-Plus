@@ -11,6 +11,10 @@
 // var gamestate = STATE_TITLE;
 import { title_logic, title_render } from "../view/title.js"
 import { bitfont_determinecolor } from "../game/bitfont.js"
+import { explore_logic, explore_render } from "../modules/explore.js"
+import { info_logic, info_render } from "../view/info.js"
+import { combat_logic, combat_render } from "../view/combat.js"
+import { dialog_logic, dialog_render } from "../modules/dialog.js"
 
 console.log("js/game_manager/gamestate.js");
 
@@ -49,9 +53,9 @@ export function gamestate_render() {
 	case STATE_COMBAT:
 	  combat_render();
 	  break;
-    case STATE_DIALOG:
-      dialog_render();
-      break;
+  case STATE_DIALOG:
+    dialog_render();
+    break;
 	case STATE_TITLE:
 	  title_render();
 	  break;

@@ -101,7 +101,7 @@ function init() {
   // load some user preferences
   var json_save = getCookie("options");
   if (json_save != null) {
-    OPTIONS = JSON.parse(json_save);
+    GLOBAL.OPTIONS = JSON.parse(json_save);
   }
 
   // TODO: Explain what all of these are. Potentially turn this into ES Modules

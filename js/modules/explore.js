@@ -4,6 +4,7 @@
  */
 
 import { bitfont_render } from "../game/bitfont.js"
+import { tileset_background } from "./tileset.js" 
 
 console.log("js/modules/explore.js");
 // var explore = new Object();
@@ -22,7 +23,7 @@ console.log("js/modules/explore.js");
  * Also most other game states trigger from here
  * and completed states usually return here.
  */
-function explore_logic() {
+export function explore_logic() {
   GLOBAL.explore.message = "";
 
   avatar_explore();
@@ -110,7 +111,7 @@ function explore_logic() {
 }
 
 
-function explore_render() {
+export function explore_render() {
 
   tileset_background();
   mazemap_render(avatar.x, avatar.y, avatar.facing);

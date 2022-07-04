@@ -76,7 +76,7 @@ function info_button_onload() {GLOBAL.INFO.button_img_loaded = true;}
 
 
 /*** Logic Functions **********************/
-function info_logic() {
+export function info_logic() {
 
   // check key to info screen
   if (pressing.action && !input_lock.action && action.select_pos == BUTTON_POS_INFO) {
@@ -122,7 +122,7 @@ function info_clear_messages() {
 }
 
 /*** Render Functions **********************/
-function info_render() {
+export function info_render() {
 
   tileset_background();
   mazemap_render(GLOBAL.AVATAR.x, GLOBAL.AVATAR.y, GLOBAL.AVATAR.facing);

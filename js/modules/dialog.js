@@ -57,7 +57,7 @@ function dialog_button_onload() {GLOBAL.DIALOG.button_img_loaded = true;}
 /**** Logic Functions ****/
 
 
-function dialog_logic() {
+export function dialog_logic() {
   // use arrows to move select cursor
   dialog_logic_moveselect();
 
@@ -160,7 +160,7 @@ function dialog_logic_moveselect() {
 
 /**** Render Functions ****/
 
-function dialog_render() {
+export function dialog_render() {
 
   tileset_background_render(shop[GLOBAL.DIALOG.shop_id].background);
 

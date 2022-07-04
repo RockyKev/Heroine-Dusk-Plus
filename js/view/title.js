@@ -162,7 +162,7 @@ export function title_render() {
 
 // TODO: detach set music. Should be managed by the loading game.
 function title_start() {
-  gamestate = STATE_DIALOG;
+  GLOBAL.STATE.gamestate = STATE_DIALOG;
   shop_set(8);
   dialog.option[2].msg1 = "Wake up";
   mazemap_set_music(atlas.maps[mazemap.current_id].music);
@@ -171,6 +171,6 @@ function title_start() {
 
 function title_continue() {
   mazemap_set_music(atlas.maps[mazemap.current_id].music);
-  gamestate = STATE_EXPLORE;
+  GLOBAL.STATE.gamestate = STATE_EXPLORE;
   GLOBAL.STATE.redraw = true;
 }

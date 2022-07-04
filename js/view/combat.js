@@ -55,7 +55,7 @@ function combat_set_enemy(enemy_id) {
 }
 
 /**** Logic **************************/
-function combat_logic() {
+export function combat_logic() {
 
   switch (combat.phase) {
     case COMBAT_PHASE_INTRO:
@@ -281,7 +281,7 @@ function combat_determine_reward() {
 
 
 /**** Render **************************/
-function combat_render() {
+export function combat_render() {
 
   // visuals common to all combat phases
   tileset_background();

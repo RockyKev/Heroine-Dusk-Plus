@@ -175,7 +175,7 @@ function tileset_onload() {
 /**
  * Draw the default background for this map
  */
-function tileset_background() {
+export function tileset_background() {
   tileset_background_render(atlas.maps[mazemap.current_id].background);
 }
 
