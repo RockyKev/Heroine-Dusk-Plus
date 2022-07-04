@@ -82,6 +82,7 @@ window.GLOBAL = {
     redraw: false,
     init_complete: false,
     gamestate: STATE_TITLE,
+    bg_music: ""
   },
   AVATAR: {}, // TODO: add entire bit
   EXPLORE: {

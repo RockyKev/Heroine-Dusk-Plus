@@ -10,7 +10,7 @@ While Atlas is a static collection, MazeMap can be altered by events.
 
 import { atlas } from "../game/atlas.js"
 import { mapscript_exec } from "../game/mapscript.js";
-// import { mazemap_set_music } from "./music.js";
+import { mazemap_set_music } from "./music.js";
 
 // TODO: This should be split into content -> system -> result.
 // right now it's content -> system.
@@ -167,6 +167,8 @@ export function mazemap_set(map_id) {
   GLOBAL.AVATAR.map_id = map_id;
 
   if (GLOBAL.STATE.gamestate != STATE_TITLE) {
+
+    // get music and set it
     mazemap_set_music(atlas.maps[map_id].music);
   }
 
@@ -176,42 +178,45 @@ export function mazemap_set(map_id) {
  * Background music handling
  */
 // TODO: Move this to it's own function
-function mazemap_set_music(song_filename) {
-  var audio_node = document.getElementById("bgmusic");
+// function mazemap_set_music(song_filename) {
+//   var audio_node = document.getElementById("bgmusic");
 
-  if (OPTIONS.music == false) {
-    audio_node.pause();
-    mazemap.current_song = "";
-    return;
-  }
+//   if (OPTIONS.music == false) {
+//     audio_node.pause();
+
+//     // pass this back 
+//     GLOBAL.STATE.bg_music = ""
+//     // mazemap.current_song = "";
+//     return;
+//   }
   
-  // don't reset song if it's already playing
-  if (song_filename == mazemap.current_song) return;
+//   // don't reset song if it's already playing
+//   if (song_filename == GLOBAL.STATE.bg_music) return;
 
-  mazemap.current_song = song_filename;
+//   GLOBAL.STATE.bg_music = song_filename;
 
-  var song_path = "music/" + song_filename;
+//   var song_path = "music/" + song_filename;
   
-  // stop the current song
-  audio_node.pause();
+//   // stop the current song
+//   audio_node.pause();
 
-  // clear the current song
-  audio_node.innerHTML = "";
+//   // clear the current song
+//   audio_node.innerHTML = "";
 
-  // TODO: do we need to play ogg or mp3?
-  var newsource = document.createElement('source');
-  if (audio_node.canPlayType('audio/mpeg;')) {
-    newsource.type = "audio/mpeg";
-    newsource.src = song_path + ".mp3";
-  } else {
-    newsource.type = "audio/ogg";
-    newsource.src = song_path + ".ogg";
-  }
-  audio_node.appendChild(newsource);
-  audio_node.load();
-  audio_node.play();
+//   // TODO: do we need to play ogg or mp3?
+//   var newsource = document.createElement('source');
+//   if (audio_node.canPlayType('audio/mpeg;')) {
+//     newsource.type = "audio/mpeg";
+//     newsource.src = song_path + ".mp3";
+//   } else {
+//     newsource.type = "audio/ogg";
+//     newsource.src = song_path + ".ogg";
+//   }
+//   audio_node.appendChild(newsource);
+//   audio_node.load();
+//   audio_node.play();
   
-}
+// }
 
 /**
  * Each map in the atlas has a list of exits
@@ -251,3 +256,4 @@ function mazemap_check_shop() {
   return false;
 }
 
+export { mazemap }

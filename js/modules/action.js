@@ -2,6 +2,9 @@
  Action menu for combat or casting spells out of combat
  */
 
+// TODO: rename this to combat actions
+// Remove casting spells out of combat. 
+
 var BUTTON_SIZE = 16;
 var SELECT_SIZE = 20;
 var BUTTON_OFFSET = 2;

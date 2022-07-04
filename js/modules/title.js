@@ -6,7 +6,9 @@
 import { bitfont_render } from "./bitfont.js"
 import { isWithin } from "./utils.js"
 import { setCookie } from "../game/saveload.js";
-
+import { mazemap_set_music } from "./music.js"
+import { atlas } from "../game/atlas.js";
+import { mazemap } from "./mazemap.js";
 
 var TITLE_MENU_MAIN = 0;
 var TITLE_MENU_OPTIONS = 1;
@@ -156,6 +158,7 @@ export function title_render() {
   }
 }
 
+// TODO: detach set music. Should be managed by the loading game.
 function title_start() {
   gamestate = STATE_DIALOG;
   shop_set(8);

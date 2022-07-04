@@ -39,6 +39,8 @@ const EN_CATEGORY = {
 // var EN_CATEGORY_UNDEAD = 2;
 // var EN_CATEGORY_AUTOMATON = 3;
 
+
+// TODO: This is the system
 var enemy = new Object();
 
 enemy.load_counter = 0;
@@ -47,6 +49,7 @@ enemy.img_loaded = false;
 enemy.stats = new Array();
 enemy.render_offset = {x:0, y:0};
 
+// TODO: This is content
 function enemy_init() {
   // TODO: Object.keys(myObj).length;
   for (let i=0; i<ENEMY_COUNT; i++) {
@@ -114,11 +117,13 @@ function enemy_init() {
   
 }
 
+// TODO: This is the system
 function enemy_onload() {
   enemy.load_counter++;
   if (enemy.load_counter == ENEMY_COUNT) enemy.img_loaded = true;
 }
 
+// TODO: This is the system
 function enemy_render(enemy_id) {
 
   // TODO: There needs to be proper error handling here

@@ -1,16 +1,19 @@
-function mazemap_set_music(song_filename) {
+export function mazemap_set_music(song_filename) {
   var audio_node = document.getElementById("bgmusic");
 
-  if (OPTIONS.music == false) {
+  if (GLOBAL.OPTIONS.music == false) {
     audio_node.pause();
-    mazemap.current_song = "";
+
+    // pass this back 
+    GLOBAL.STATE.bg_music = ""
+    // mazemap.current_song = "";
     return;
   }
   
   // don't reset song if it's already playing
-  if (song_filename == mazemap.current_song) return;
+  if (song_filename == GLOBAL.STATE.bg_music) return;
 
-  mazemap.current_song = song_filename;
+  GLOBAL.STATE.bg_music = song_filename;
 
   var song_path = "music/" + song_filename;
   
@@ -34,5 +37,3 @@ function mazemap_set_music(song_filename) {
   audio_node.play();
   
 }
-
-export { mazemap_set_music };
