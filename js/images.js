@@ -1,4 +1,5 @@
 /**
+ * TODO: Is this used? 
  Handle generic image loading and rendering
  Clint Bellanger 2013
  */
@@ -44,9 +45,9 @@ images.render = function(img_id, src_x, src_y, src_w, src_h, dest_x, dest_y) {
       src_y * GLOBAL.PRESCALE,
       src_w * GLOBAL.PRESCALE,
       src_h * GLOBAL.PRESCALE,
-      dest_x * SCALE,
-      dest_y * SCALE,
-      src_w * SCALE,
-      src_h * SCALE,
+      dest_x * GLOBAL.SCALE,
+      dest_y * GLOBAL.SCALE,
+      src_w * GLOBAL.SCALE,
+      src_h * GLOBAL.SCALE,
     );
 }

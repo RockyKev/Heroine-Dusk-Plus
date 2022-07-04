@@ -3,11 +3,11 @@
 /**
  * Title screen
  */
-import { bitfont_render } from "./bitfont.js"
+import { bitfont_render } from "../content/bitfont.js.js"
 import { isWithin } from "./utils.js"
 import { setCookie } from "../game/saveload.js";
 import { mazemap_set_music } from "./music.js"
-import { atlas } from "../game/atlas.js";
+import { atlas } from "../content/map_atlas.js";
 import { mazemap } from "./mazemap.js";
 
 var TITLE_MENU_MAIN = 0;

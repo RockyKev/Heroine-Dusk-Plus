@@ -3,7 +3,7 @@
  
  */
 
-import { bitfont_render } from "./bitfont.js"
+import { bitfont_render } from "../game/bitfont.js"
 
 // var explore = new Object();
 // explore.encounter_chance = 0;

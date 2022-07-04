@@ -3,7 +3,7 @@
  Display information about the heroine
  */
 
-import { bitfont_render } from "./bitfont.js"
+import { bitfont_render } from "../content/bitfont.js.js"
 
 // consts
 var AVATAR_SPRITE_W = 80;

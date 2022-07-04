@@ -2,7 +2,7 @@
  Conversation and shop handling
  */
 import { shop_set } from "./shop.js"
-import { bitfont_render } from "./bitfont.js"
+import { bitfont_render } from "../game/bitfont.js"
 
 // var DIALOG_BUTTON_NONE = 0;
 // var DIALOG_BUTTON_BUY = 1;

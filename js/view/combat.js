@@ -2,7 +2,7 @@
  Combat routines
  */
 
-import { bitfont_render } from "./bitfont.js"
+import { bitfont_render } from "../content/bitfont.js.js"
 
 var COMBAT_PHASE_INTRO = 0;
 var COMBAT_PHASE_INPUT = 1;

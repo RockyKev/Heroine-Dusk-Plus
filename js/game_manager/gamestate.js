@@ -10,8 +10,8 @@
 // var STATE_TITLE = 4; 
  
 // var gamestate = STATE_TITLE;
-import { title_logic, title_render } from "./title.js"
-import { bitfont_determinecolor } from "./bitfont.js"
+import { title_logic, title_render } from "../view/title.js"
+import { bitfont_determinecolor } from "../content/bitfont.js.js"
 
 
 export function gamestate_logic() {

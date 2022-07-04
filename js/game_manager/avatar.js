@@ -3,7 +3,7 @@
  **/
 
 import { getCookie, setCookie } from "../game/saveload.js";
-import { mazemap_set } from "./mazemap.js";
+import { mazemap_set } from "../modules/mazemap.js";
 
 // var avatar = new Object();
 GLOBAL.AVATAR.campaign = new Array();

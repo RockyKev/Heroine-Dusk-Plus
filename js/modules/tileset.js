@@ -4,7 +4,7 @@ TileSet class.
 2013 Clint Bellanger
 */
 
-import { loadbar_render } from "./loadbar.js" // TODO: This shouldn't be here
+import { loadbar_render } from "../game/loadbar.js" // TODO: This shouldn't be here
 
 var TILE_COUNT = 19;
 var BACKGROUND_COUNT = 4;
