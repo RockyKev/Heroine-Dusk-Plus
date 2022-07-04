@@ -1,6 +1,8 @@
 // This is more magic spells. Should be better organized.
 // TODO: organize into folders
 
+console.log("js/content/power.js");
+
 /**
  * Resolve power use
  */

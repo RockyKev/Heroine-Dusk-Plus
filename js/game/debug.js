@@ -3,6 +3,9 @@
  * If somehow the player is stuck,
  * Use this from a command console
  */
+
+console.log("js/game/debug.js");
+
 function stuck() {
   avatar.x = 1;
   avatar.y = 1;

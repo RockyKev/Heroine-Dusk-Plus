@@ -2,6 +2,8 @@
  Various config options to help deployment to different platforms.
  */
 
+console.log("js/game_manager/config.js");
+
 // TODO: figure out how to make this unsuck
 var can;     // canvas
 var ctx;     // context

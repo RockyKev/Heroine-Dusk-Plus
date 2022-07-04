@@ -5,6 +5,8 @@
 // TODO: rename this to combat actions
 // Remove casting spells out of combat. 
 
+console.log("js/modules/combat_action.js");
+
 var BUTTON_SIZE = 16;
 var SELECT_SIZE = 20;
 var BUTTON_OFFSET = 2;

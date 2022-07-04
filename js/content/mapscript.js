@@ -3,6 +3,7 @@
  */
 
 // import { atlas } 
+console.log("js/content/mapscript.js");
 
 var mapscript = new Object();
 

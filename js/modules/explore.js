@@ -5,6 +5,7 @@
 
 import { bitfont_render } from "../game/bitfont.js"
 
+console.log("js/modules/explore.js");
 // var explore = new Object();
 // explore.encounter_chance = 0;
 // explore.encounter_increment = .05;

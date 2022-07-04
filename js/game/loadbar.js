@@ -8,6 +8,8 @@
   
  */
 
+console.log("js/game/loadbar.js");
+
 var loadbar = new Object();
 
 // TODO: figure out how to move this

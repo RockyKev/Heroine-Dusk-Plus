@@ -3,7 +3,9 @@
  Display information about the heroine
  */
 
-import { bitfont_render } from "../content/bitfont.js.js"
+import { bitfont_render } from "../game/bitfont.js"
+
+console.log("js/view/info.js")
 
 // consts
 var AVATAR_SPRITE_W = 80;

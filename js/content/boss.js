@@ -1,7 +1,9 @@
 /**
  * Boss encounter logic and special art
  */
- 
+
+console.log("js/content/boss.js");
+
 var boss = new Object();
 
 boss.boneshield_img = new Image();

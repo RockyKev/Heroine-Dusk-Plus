@@ -2,6 +2,7 @@
  Treasure
  Handles display and rewards for loot
  */
+console.log("js/content/treasure.js");
 
 var TREASURE_ICON_SIZE = 32;
 var TREASURE_POS_X = 64;

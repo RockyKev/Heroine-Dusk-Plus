@@ -1,3 +1,5 @@
+console.log("js/game/utils.js");
+
 // click areas reusable by several modules
 var clickarea_up = {x:40, y:0, w:80, h:100};
 var clickarea_down = {x:40, y:100, w:80, h:20};

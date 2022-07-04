@@ -1,6 +1,5 @@
 /**
  Primary game state switcher
- 
  */
  
 // var STATE_EXPLORE = 0;
@@ -11,8 +10,9 @@
  
 // var gamestate = STATE_TITLE;
 import { title_logic, title_render } from "../view/title.js"
-import { bitfont_determinecolor } from "../content/bitfont.js.js"
+import { bitfont_determinecolor } from "../game/bitfont.js"
 
+console.log("js/game_manager/gamestate.js");
 
 export function gamestate_logic() {
 

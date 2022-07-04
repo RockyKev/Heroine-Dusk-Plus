@@ -8,13 +8,14 @@ While Atlas is a static collection, MazeMap can be altered by events.
 2013 Clint Bellanger
 */
 
-import { atlas } from "../game/map_atlas.js"
-import { mapscript_exec } from "../game/mapscript.js";
+import { atlas } from "../content/map_atlas.js"
+import { mapscript_exec } from "../content/mapscript.js";
 import { mazemap_set_music } from "../game/music.js";
 
 // TODO: This should be split into content -> system -> result.
 // right now it's content -> system.
 
+console.log("js/modules/mazemap.js");
 
 var mazemap = new Object();
 mazemap.current_id = 0;

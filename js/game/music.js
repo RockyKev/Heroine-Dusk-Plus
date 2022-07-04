@@ -1,3 +1,5 @@
+console.log("js/game/music.js");
+
 export function mazemap_set_music(song_filename) {
   var audio_node = document.getElementById("bgmusic");
 

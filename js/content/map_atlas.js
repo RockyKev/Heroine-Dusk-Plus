@@ -2,8 +2,9 @@
  Atlas.js
  Collection of maps and transition data
  */
-
 import { ENEMY } from "./enemy.js";
+
+console.log("js/content/map_atlas.js");
 
 var MAP_COUNT = 11;
 

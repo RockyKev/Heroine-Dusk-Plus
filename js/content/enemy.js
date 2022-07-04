@@ -8,6 +8,8 @@
 // TODO: Replace with Object.keys(myObj).length;
 var ENEMY_COUNT = 8;
 
+console.log("js/content/enemy.js");
+
 const ENEMY = {
   SHADOW_TENDRILS: 0,
   IMP: 1,

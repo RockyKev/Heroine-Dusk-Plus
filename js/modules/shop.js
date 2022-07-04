@@ -2,6 +2,8 @@
  Dialog info for game shops
  */
 
+console.log("js/modules/shop.js");
+
 var SHOP_COUNT = 9;
 
 var SHOP_WEAPON = 0;

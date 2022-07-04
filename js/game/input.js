@@ -7,6 +7,7 @@ Use these lines in the init() function to enable:
 2013 Clint Bellanger
 */
 
+console.log("js/game/input.js");
 
 //---- Input Functions ----------------------------------------------
 

@@ -10,7 +10,9 @@ Note this class is simplified in several ways:
 
  */
 
-import { avatar_badly_hurt } from "./avatar.js"
+import { avatar_badly_hurt } from "../game_manager/avatar.js"
+
+console.log("js/game/bitfont.js");
 
 // var JUSTIFY_LEFT = 0;
 // var JUSTIFY_RIGHT = 1;

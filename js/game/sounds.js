@@ -1,7 +1,8 @@
 /**
  Sound effects
  */
- 
+console.log("js/game/sounds.js");
+
 var SFX_COUNT = 14;
  
 var SFX_ATTACK = 0;

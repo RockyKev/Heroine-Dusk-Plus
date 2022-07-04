@@ -6,6 +6,8 @@ TileSet class.
 
 import { loadbar_render } from "../game/loadbar.js" // TODO: This shouldn't be here
 
+console.log("js/modules/tileset.js");
+
 var TILE_COUNT = 19;
 var BACKGROUND_COUNT = 4;
 

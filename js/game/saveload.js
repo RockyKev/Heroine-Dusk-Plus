@@ -3,6 +3,9 @@
  * Generic cookie writer
  * Based on http://www.w3schools.com/js/js_cookies.asp
  */
+
+console.log("js/game/saveload.js");
+
 function setCookie(c_name, value, exdays) {
   var exdate=new Date();
   exdate.setDate(exdate.getDate() + exdays);

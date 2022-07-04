@@ -4,6 +4,8 @@
 import { shop_set } from "./shop.js"
 import { bitfont_render } from "../game/bitfont.js"
 
+
+console.log("js/modules/dialog.js");
 // var DIALOG_BUTTON_NONE = 0;
 // var DIALOG_BUTTON_BUY = 1;
 // var DIALOG_BUTTON_EXIT = 2;

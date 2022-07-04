@@ -3,6 +3,8 @@
  * Shown in the Info screen
  */
 
+console.log("js/view/minimap.js")
+
 var MINIMAP_ICON_SIZE = 3; // pixels
  
 var MINIMAP_ICON_NONWALKABLE = 0;
