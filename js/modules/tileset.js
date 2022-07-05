@@ -5,6 +5,8 @@ TileSet class.
 */
 
 import { loadbar_render } from "../game/loadbar.js" // TODO: This shouldn't be here
+import { atlas } from "../content/map_atlas.js"
+import { mazemap } from "./mazemap.js"
 
 console.log("js/modules/tileset.js");
 
@@ -183,7 +185,7 @@ export function tileset_background() {
  * Render a specific background
  */
 function tileset_background_render(background_id) {
-  ctx.drawImage(tileset.background_img[background_id],0,0, 160*SCALE, 120*SCALE);  
+  ctx.drawImage(tileset.background_img[background_id],0,0, 160*GLOBAL.SCALE, 120*GLOBAL.SCALE);  
 }
 
 function tileset_render(tile_id, position) {
