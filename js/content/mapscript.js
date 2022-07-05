@@ -4,6 +4,8 @@
 
 // import { atlas } 
 console.log("js/content/mapscript.js");
+import { action } from "../modules/combat_action.js";
+import { combat } from "../view/combat.js";
 
 var mapscript = new Object();
 
@@ -99,7 +101,7 @@ function mapscript_message(x, y, status, message) {
       return false;
     }
 
-    explore.message = message;
+    GLOBAL.EXPLORE.message = message;
     GLOBAL.AVATAR.campaign.push(status);
     return true;
 
@@ -114,7 +116,7 @@ function mapscript_haybale(x, y) {
   if (!GLOBAL.AVATAR.moved) return false;
 
   if (GLOBAL.AVATAR.x == x && GLOBAL.AVATAR.y == y) { 
-    explore.message = "You rest for awhile.";
+    GLOBAL.EXPLORE.message = "You rest for awhile.";
     avatar_sleep();
     sounds_play(SFX_COIN);
     return true;
@@ -158,44 +160,44 @@ function mapscript_grant_item(item, item_count) {
   sounds_play(SFX_COIN);
 
   if (item_count == 1) {
-    explore.message = "Found " + item + "!";
+    GLOBAL.EXPLORE.message = "Found " + item + "!";
   }
   else if (item_count > 1) {
-    explore.message = "Found " + item_count + " " + item;
+    GLOBAL.EXPLORE.message = "Found " + item_count + " " + item;
   }
 
   if (item == "Gold") {
     GLOBAL.AVATAR.gold += item_count;
 
     // flag gold treasure for display while exploring    
-    explore.gold_value = item_count;
+    GLOBAL.EXPLORE.gold_value = item_count;
   }
   else if (item == "Wood Stick") {
     // only keep the stick if it's better than what you already have
     if (GLOBAL.AVATAR.weapon == 0) GLOBAL.AVATAR.weapon = 1;
-    explore.treasure_id = 10;
+    GLOBAL.EXPLORE.treasure_id = 10;
   }
   else if (item == "Spellbook: Heal") {
     if (GLOBAL.AVATAR.spellbook == 0) GLOBAL.AVATAR.spellbook = 1;
-    explore.treasure_id = 11;
+    GLOBAL.EXPLORE.treasure_id = 11;
   }
   else if (item == "Magic Sapphire (MP Up)") {
     GLOBAL.AVATAR.mp += 2;
     GLOBAL.AVATAR.max_mp += 2;
-    explore.treasure_id = 12;
+    GLOBAL.EXPLORE.treasure_id = 12;
   }
   else if (item == "Magic Emerald (HP Up)") {
     GLOBAL.AVATAR.hp += 5;
     GLOBAL.AVATAR.max_hp += 5;
-    explore.treasure_id = 13;
+    GLOBAL.EXPLORE.treasure_id = 13;
   }
   else if (item == "Magic Ruby (Atk Up)") {
     GLOBAL.AVATAR.bonus_atk += 1;
-    explore.treasure_id = 14;
+    GLOBAL.EXPLORE.treasure_id = 14;
   }
   else if (item == "Magic Diamond (Def Up)") {
     GLOBAL.AVATAR.bonus_def += 1;
-    explore.treasure_id = 15;
+    GLOBAL.EXPLORE.treasure_id = 15;
   }
   
 }
@@ -269,8 +271,8 @@ function mapscript_enemy(x, y, enemy_id, status) {
     }
     
     // prepare combat mode
-    explore.encounter_chance = 0.0;
-    gamestate = STATE_COMBAT;
+    GLOBAL.EXPLORE.encounter_chance = 0.0;
+    GLOBAL.STATE.gamestate = STATE_COMBAT;
     action.select_pos = BUTTON_POS_ATTACK;
     combat.timer = COMBAT_INTRO_DELAY;
     combat.phase = COMBAT_PHASE_INTRO;

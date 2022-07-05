@@ -4,6 +4,7 @@
  */
 
 import { bitfont_render } from "../game/bitfont.js"
+import { mazemap_render } from "./mazemap.js"
 import { tileset_background } from "./tileset.js" 
 
 console.log("js/modules/explore.js");
@@ -24,16 +25,16 @@ console.log("js/modules/explore.js");
  * and completed states usually return here.
  */
 export function explore_logic() {
-  GLOBAL.explore.message = "";
+  GLOBAL.EXPLORE.message = "";
 
   avatar_explore();
 	
   // check map exit
-  if (avatar.moved) {
+  if (GLOBAL.AVATAR.moved) {
     if (mazemap_check_exit()) {
 	
 	  // display the name of the new map
-	  GLOBAL.explore.message = atlas.maps[mazemap.current_id].name;
+	  GLOBAL.EXPLORE.message = atlas.maps[mazemap.current_id].name;
 	  
 	  // don't allow a random encounter when switching maps
       avatar_save();
@@ -42,7 +43,7 @@ export function explore_logic() {
   }  
   
   // check shop
-  if (avatar.moved) {
+  if (GLOBAL.AVATAR.moved) {
     if (mazemap_check_shop()) {
       gamestate = STATE_DIALOG;
       redraw = true;
@@ -52,7 +53,7 @@ export function explore_logic() {
   }
 
   // check special script;
-  if (avatar.moved) {
+  if (GLOBAL.AVATAR.moved) {
     if (mapscript_exec(mazemap.current_id)) {
       avatar_save();
       return;
@@ -64,10 +65,10 @@ export function explore_logic() {
   // console.log("hi there");
   // console.log(atlas)
   
-  if (avatar.moved && enemy_options > 0) {
+  if (GLOBAL.AVATAR.moved && enemy_options > 0) {
 
-    if (Math.random() < GLOBAL.explore.encounter_chance) {
-      GLOBAL.explore.encounter_chance = 0.0;
+    if (Math.random() < GLOBAL.EXPLORE.encounter_chance) {
+      GLOBAL.EXPLORE.encounter_chance = 0.0;
       gamestate = STATE_COMBAT;
       action.select_pos = BUTTON_POS_ATTACK;
       combat.timer = COMBAT_INTRO_DELAY;
@@ -81,8 +82,8 @@ export function explore_logic() {
       return;
     }
     else {
-      GLOBAL.explore.encounter_chance += GLOBAL.explore.encounter_increment;
-      GLOBAL.explore.encounter_chance = Math.min(GLOBAL.explore.encounter_chance, GLOBAL.explore.encounter_max);
+      GLOBAL.EXPLORE.encounter_chance += GLOBAL.EXPLORE.encounter_increment;
+      GLOBAL.EXPLORE.encounter_chance = Math.min(GLOBAL.EXPLORE.encounter_chance, GLOBAL.EXPLORE.encounter_max);
     }
   }
   
@@ -114,11 +115,11 @@ export function explore_logic() {
 export function explore_render() {
 
   tileset_background();
-  mazemap_render(avatar.x, avatar.y, avatar.facing);
+  mazemap_render(GLOBAL.AVATAR.x, GLOBAL.AVATAR.y, GLOBAL.AVATAR.facing);
 
   // HUD elements
   // direction
-  bitfont_render(avatar.facing, 80, 2, "center");
+  bitfont_render(GLOBAL.AVATAR.facing, 80, 2, "center");
   
   info_render_button();
 
@@ -127,23 +128,23 @@ export function explore_render() {
   }
     
   // if there is treasure to display, put the message higher
-  if (GLOBAL.explore.gold_value > 0 || GLOBAL.explore.treasure_id > 0) {
-    bitfont_render(GLOBAL.explore.message, 80, 70, "center");  
+  if (GLOBAL.EXPLORE.gold_value > 0 || GLOBAL.EXPLORE.treasure_id > 0) {
+    bitfont_render(GLOBAL.EXPLORE.message, 80, 70, "center");  
   }
   else {
-    bitfont_render(GLOBAL.explore.message, 80, 100, "center");    
+    bitfont_render(GLOBAL.EXPLORE.message, 80, 100, "center");    
   }
   
   // if a map event has rewarded gold to the player
   // display it on the ground here
-  if (GLOBAL.explore.gold_value > 0) {
-    treasure_render_gold(GLOBAL.explore.gold_value);
-    GLOBAL.explore.gold_value = 0;    
+  if (GLOBAL.EXPLORE.gold_value > 0) {
+    treasure_render_gold(GLOBAL.EXPLORE.gold_value);
+    GLOBAL.EXPLORE.gold_value = 0;    
   }
   
   // display treasure on the ground
-  if (GLOBAL.explore.treasure_id > 0) {
-    treasure_render_item(GLOBAL.explore.treasure_id);
-    GLOBAL.explore.treasure_id = 0;
+  if (GLOBAL.EXPLORE.treasure_id > 0) {
+    treasure_render_item(GLOBAL.EXPLORE.treasure_id);
+    GLOBAL.EXPLORE.treasure_id = 0;
   }
 }

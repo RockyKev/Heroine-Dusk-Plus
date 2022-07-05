@@ -15,6 +15,7 @@ var COMBAT_PHASE_DEFEAT = 5;
 
 var COMBAT_INTRO_DELAY = 15;
 
+// TODO: This needs to be changed in some way
 // object setup
 var combat = new Object();
 
@@ -377,3 +378,4 @@ function combat_render_defense_log() {
   }
 }
 
+export { combat }

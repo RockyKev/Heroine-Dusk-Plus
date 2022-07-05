@@ -21,7 +21,7 @@ var BUTTON_POS_LIGHT = {x:140, y:60, w:20, h:20};
 var BUTTON_POS_FREEZE = {x:120, y:80, w:20, h:20};
 var BUTTON_POS_REFLECT = {x:140, y:80, w:20, h:20};
 
-
+// TODO: this is too stupidly generic
 var action = new Object();
 
 action.button_img = new Image();
@@ -335,3 +335,4 @@ function action_render_select(pos) {
   );
 }
 
+export { action };

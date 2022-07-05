@@ -46,7 +46,7 @@ Drawing is done in this order (a=10, b=11, c=12)
 .........
 
 */ 
-function mazemap_render(x, y, facing) {
+export function mazemap_render(x, y, facing) {
 
   if (facing == "north") {
     // back row
